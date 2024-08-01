@@ -11,10 +11,10 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.text.Text;
 
 public class CourseScreenController implements Initializable {
 
@@ -24,7 +24,7 @@ public class CourseScreenController implements Initializable {
     private Button backBTN;
 
     @FXML
-    private Text courseTV;
+    private Label courseLAB;
 
     @FXML
     private TableView<Course> courseTable;

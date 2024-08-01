@@ -5,7 +5,7 @@ import com.codecademy.GUI;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.text.Text;
+import javafx.scene.control.Label;
 
 // This class is the controller for the homeScreen and makes all the buttons work.
 public class HomeScreenController {
@@ -20,7 +20,7 @@ public class HomeScreenController {
     private Button statsBTN;
 
     @FXML
-    private Text titleTV;
+    private Label homescreenLAB;
 
     @FXML
     private void handleStudentButton(ActionEvent event) { // This method handles the student button.
