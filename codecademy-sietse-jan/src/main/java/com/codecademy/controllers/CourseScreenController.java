@@ -60,7 +60,7 @@ public class CourseScreenController implements Initializable {
 
     @FXML
     private void handleBackButton(ActionEvent event) { // This method handles the back button.
-        System.out.println("Back button clicked"); // Logs the activation of the back button.
+        System.out.println("Back button clicked --> homeScreen"); // Logs the activation of the back button.
         GUI.instance.setRoot("homeScreen.fxml"); // Loads the new fxml in.
     }
 
