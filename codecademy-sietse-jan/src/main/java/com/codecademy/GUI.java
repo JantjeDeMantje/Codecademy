@@ -8,7 +8,9 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class GUI extends Application { // This class shows all the GUI elements
-    private final String DEFAULT_TITLE = "Codecademy"; // Default title of the application
+
+    // Default title of the application
+    private final String DEFAULT_TITLE = "Codecademy (Sietse 't Hooft, 2213722 & Jan Roelofs, 2218997)";
     public static GUI instance;
     private Stage primaryStage;
 
@@ -29,7 +31,7 @@ public class GUI extends Application { // This class shows all the GUI elements
     // homescreen.
     public Parent loadFXML(String fxmlPath) throws Exception {
         if (fxmlPath == null || fxmlPath.isEmpty()) {
-            fxmlPath = "/com/codecademy/primary.fxml"; // This is the homescreen.
+            fxmlPath = "/com/codecademy/homeScreen.fxml"; // This is the homescreen.
         } else {
             fxmlPath = "/com/codecademy/" + fxmlPath;
         }
@@ -42,6 +44,9 @@ public class GUI extends Application { // This class shows all the GUI elements
     public void setRoot(String fxmlPath) {
         try {
             Parent root = loadFXML(fxmlPath); // Load the FXML file.
+
+            // Loads the CSS stylesheet
+            root.getStylesheets().add(getClass().getResource("/com/codecademy/css/index.css").toExternalForm());
 
             Scene scene = new Scene(root, 1200, 700);
             primaryStage.setScene(scene);

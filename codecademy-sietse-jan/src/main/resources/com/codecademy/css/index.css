@@ -1,0 +1,12 @@
+.button:focused {
+    -fx-focus-color: gray;
+    -fx-faint-focus-color: gray;
+    -fx-focus-border-width: 0.5px;
+    -fx-faint-border-width: 0.5px;
+    -fx-border-size: 0.5px;
+}
+
+.button {
+    -fx-border-color: gray;
+    -fx-border-size: 1px;
+}
