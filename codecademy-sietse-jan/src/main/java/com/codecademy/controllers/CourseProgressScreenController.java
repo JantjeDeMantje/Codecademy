@@ -63,6 +63,8 @@ public class CourseProgressScreenController {
 
     @FXML
     void handleBackButton(ActionEvent event) {// This method handles the back button.
+        System.out.println("Back button clicked --> courseScreen"); // Logs the activation of the back button.
+        GUI.instance.setRoot("courseScreen.fxml"); // Loads the new fxml in.
     }
 
 }
