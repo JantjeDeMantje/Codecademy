@@ -24,7 +24,7 @@ public class HomeScreenController {
 
     @FXML
     private void handleStudentButton(ActionEvent event) { // This method handles the student button.
-        System.out.println("Students button clicked"); // Logs the activation of the student button.
+        System.out.println("Student button clicked"); // Logs the activation of the student button.
 
         GUI.instance.setRoot("studentScreen.fxml"); // Loads the new fxml in.
     }

@@ -6,4 +6,6 @@ module com.codecademy {
 
     exports com.codecademy;
     exports com.codecademy.controllers;
+    exports com.codecademy.domain;
+    exports com.codecademy.logic;
 }
