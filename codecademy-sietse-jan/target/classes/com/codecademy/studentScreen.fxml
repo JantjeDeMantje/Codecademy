@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.codecademy.controllers.StudentScreenController">
+   <children>
+      <TableView fx:id="studentTable" prefHeight="700.0" prefWidth="600.0">
+        <columns>
+        <TableColumn fx:id="nameColumn" prefWidth="186.0" text="Naam" />
+         <TableColumn fx:id="emailColumn" prefWidth="306.0" text="Emailadres" />
+         <TableColumn fx:id="birthdateColumn" minWidth="0.0" prefWidth="107.0" text="Geboortedatum" />
+        </columns>
+      </TableView>
+      <Button fx:id="createBTN" layoutX="640.0" layoutY="511.0" mnemonicParsing="false" onAction="#handleCreateButton" prefHeight="70.0" prefWidth="200.0" text="Maak aan" AnchorPane.leftAnchor="640.0" />
+      <Button fx:id="registerBTN" layoutX="960.0" layoutY="609.0" mnemonicParsing="false" onAction="#handleRegisterButton" prefHeight="70.0" prefWidth="200.0" text="Schrijf in" AnchorPane.rightAnchor="40.0" />
+      <Button fx:id="deleteBTN" layoutX="640.0" layoutY="609.0" mnemonicParsing="false" onAction="#handleDeleteButton" prefHeight="70.0" prefWidth="200.0" text="Verwijder" AnchorPane.leftAnchor="640.0" />
+      <Button fx:id="updateBTN" layoutX="960.0" layoutY="501.0" mnemonicParsing="false" onAction="#handleUpdateButton" prefHeight="70.0" prefWidth="200.0" text="Update" AnchorPane.rightAnchor="40.0" />
+      <Text fx:id="studentsLAB" layoutX="704.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Studenten" textAlignment="CENTER" wrappingWidth="395.13671875" AnchorPane.leftAnchor="704.0" AnchorPane.rightAnchor="100.86328125">
+         <font>
+            <Font size="48.0" />
+         </font>
+      </Text>
+      <Line endX="495.0" layoutX="705.0" layoutY="67.0" startX="-105.0" />
+      <Text fx:id="nameLAB" layoutX="640.0" layoutY="120.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Naam:" wrappingWidth="200.0" AnchorPane.topAnchor="100.0">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
+      <Text fx:id="emailLAB" layoutX="640.0" layoutY="178.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Emailadres:" wrappingWidth="200.0" AnchorPane.topAnchor="150.0">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
+      <Text fx:id="birthdateLAB" layoutX="640.0" layoutY="234.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Geboortedatum:" wrappingWidth="200.0" AnchorPane.topAnchor="200.0">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
+      <Text fx:id="genderLAB" layoutX="640.0" layoutY="286.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Geslacht:" wrappingWidth="200.0" AnchorPane.topAnchor="250.0">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
+      <Text fx:id="postcodeLAB" layoutX="640.0" layoutY="343.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Postcode:" wrappingWidth="200.0" AnchorPane.topAnchor="300.0">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
+      <Text fx:id="cityLAB" layoutX="640.0" layoutY="400.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Woonplaats:" wrappingWidth="200.0" AnchorPane.topAnchor="350.0">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
+      <Text fx:id="countryLAB" layoutX="640.0" layoutY="451.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Land:" wrappingWidth="200.0" AnchorPane.topAnchor="400.0">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
+      <Line endX="495.0" layoutX="707.0" layoutY="476.0" startX="-105.0" />
+      <TextField fx:id="nameTEXT" layoutX="960.0" layoutY="96.0" prefHeight="25.0" prefWidth="200.0">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="emailTEXT" layoutX="960.0" layoutY="146.0" prefHeight="25.0" prefWidth="200.0">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="birthdateTEXT" layoutX="960.0" layoutY="196.0" prefHeight="25.0" prefWidth="200.0">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="genderTEXT" layoutX="960.0" layoutY="246.0" prefHeight="25.0" prefWidth="200.0">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="postcodeTEXT" layoutX="960.0" layoutY="296.0" prefHeight="25.0" prefWidth="200.0">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="cityTEXT" layoutX="960.0" layoutY="346.0" prefHeight="25.0" prefWidth="200.0">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="countryTEXT" layoutX="960.0" layoutY="396.0" prefHeight="25.0" prefWidth="200.0">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </TextField>
+      <Button fx:id="backBTN" layoutX="606.0" layoutY="4.0" mnemonicParsing="false" onAction="#handleBackButton" prefHeight="57.0" prefWidth="98.0" text="&lt;--">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>
