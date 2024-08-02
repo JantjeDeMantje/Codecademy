@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.codecademy.controllers.StudentRegisterScreenController">
+   <children>
+      <TableView fx:id="courseRegistrationTable" prefHeight="700.0" prefWidth="600.0">
+        <columns>
+          <TableColumn fx:id="courseNameColumn" prefWidth="518.0" text="Cursussen" />
+          <TableColumn fx:id="registrationStateColumn" minWidth="0.0" prefWidth="81.0" text="Status"  />
+        </columns>
+      </TableView>
+      <Text fx:id="studentNameLAB" layoutX="750.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Student_Name" textAlignment="CENTER" wrappingWidth="300.0" AnchorPane.rightAnchor="150.0" AnchorPane.topAnchor="20.0">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
+      <Line endX="499.0" layoutX="701.0" layoutY="46.0" startX="-100.0" AnchorPane.topAnchor="60.0" />
+      <Line endX="499.0" layoutX="701.0" layoutY="501.0" startX="-100.0" />
+      <Button fx:id="registerBTN" layoutX="641.0" layoutY="551.0" mnemonicParsing="false" onAction="#handleRegisterButton" prefHeight="100.0" prefWidth="221.0" text="Inschrjiven" AnchorPane.bottomAnchor="49.0" AnchorPane.leftAnchor="641.0">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Button>
+      <Button fx:id="unregisterBTN" layoutX="941.0" layoutY="551.0" mnemonicParsing="false" onAction="#handleUnregisterButton" prefHeight="100.0" prefWidth="221.0" text="Uitschrijven" AnchorPane.bottomAnchor="49.0" AnchorPane.rightAnchor="38.0">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Button>
+      <Text fx:id="nameLAB" layoutX="650.0" layoutY="110.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Naam:" wrappingWidth="149.13671875">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
+      <Text fx:id="subjectLAB" layoutX="650.0" layoutY="159.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Onderwerp:" wrappingWidth="130.13671875">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
+      <Text fx:id="difficultyLAB" layoutX="650.0" layoutY="208.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Niveau:">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
+      <TextArea fx:id="introTextTEXT" layoutX="651.0" layoutY="259.0" prefHeight="200.0" prefWidth="500.0" AnchorPane.rightAnchor="50.0" />
+      <TextField fx:id="nameTEXT" layoutX="977.0" layoutY="88.0" prefHeight="39.0" prefWidth="221.0" AnchorPane.rightAnchor="50.0">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="subjectTEXT" layoutX="977.0" layoutY="137.0" prefHeight="39.0" prefWidth="221.0" AnchorPane.rightAnchor="50.0">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="difficultyTEXT" layoutX="976.0" layoutY="186.0" prefHeight="39.0" prefWidth="221.0" AnchorPane.rightAnchor="50.0">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </TextField>
+      <Button fx:id="backBTN" layoutX="601.0" layoutY="2.0" mnemonicParsing="false" onAction="#handleBackButton" prefHeight="57.0" prefWidth="85.0" text="&lt;--">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>
