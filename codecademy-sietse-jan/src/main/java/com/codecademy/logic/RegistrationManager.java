@@ -1,7 +1,6 @@
 package com.codecademy.logic;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import com.codecademy.dataStorage.DataHolder;
 import com.codecademy.domain.Course;
