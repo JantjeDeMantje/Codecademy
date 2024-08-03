@@ -29,4 +29,8 @@ public class RegistrationManager {
         return registrations;
     }
 
+    public ArrayList<Course> getCourses(){
+        return courses;
+    }
+
 }
