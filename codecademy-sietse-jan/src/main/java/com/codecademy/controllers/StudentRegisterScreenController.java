@@ -25,6 +25,8 @@ public class StudentRegisterScreenController {
     private RegistrationManager registrationManager;
 
     private HashMap<String, Boolean> coursesAndRegistrations;
+    private Map.Entry<String,Boolean> selectedRow;
+    private Student selectedStudent;
 
     @FXML
     private TableView<Map.Entry<String,Boolean>> courseRegistrationTable;
@@ -60,7 +62,8 @@ public class StudentRegisterScreenController {
     private Text studentNameLAB;
 
     public void initialize() { // This method initializes the course screen.
-        registrationManager = new RegistrationManager(); // Creates a new registrationManager object.
+        getinformation();
+        registrationManager = new RegistrationManager(selectedStudent); // Creates a new registrationManager object.
         setLabel();
         fillTable();
         tableSelectionListener();
@@ -81,7 +84,7 @@ public class StudentRegisterScreenController {
     }
 
     private void setLabel() { // This method sets the right student name to the studentNameLabel.
-        studentNameLAB.setText(DataHolder.getInstance().getSelectedStudent().getName());
+        studentNameLAB.setText(selectedStudent.getName());
     }
 
     private void formatAllInformation(){ // This method formats all the information needed for the table.
@@ -116,8 +119,9 @@ public class StudentRegisterScreenController {
         courseRegistrationTable.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue != null) {
                 System.out.println("Selected course: "+ newValue.getKey()); // Logger for the selected courseName
+                selectedRow = newValue;
 
-                handleRowSelect(registrationManager.getCourseInfo(newValue.getKey().toString()));
+                handleRowSelect(getCourseInfo());
             }
         });
     }
