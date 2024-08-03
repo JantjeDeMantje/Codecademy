@@ -115,6 +115,16 @@ public class StudentRegisterScreenController {
 
 
 
+    private Boolean checkRegistration(Boolean checkCondition){ // This method checks if the person is already (un)registered.
+        if (checkCondition != selectedRow.getValue()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+
+
     private void tableSelectionListener() { // This method looks if a row is selected.
         courseRegistrationTable.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue != null) {
@@ -136,23 +146,31 @@ public class StudentRegisterScreenController {
     }
 
     @FXML
-    void handleRegisterButton(ActionEvent event) { // This method handels the registerButton
-        System.out.println(selectedStudent.getName() + " heeft zich in de cursus " + getCourseInfo().getCourseName() + "geschreven."); // Logs a registration.
+    void handleRegisterButton(ActionEvent event) { // This method handels the registerButton.
+        if(checkRegistration(true)){ // Checks if the person isnt already registerd.
+            System.out.println(selectedStudent.getName() + " heeft zich in de cursus " + getCourseInfo().getCourseName() + "geschreven."); // Logs a registration.
 
-        selectedRow.setValue(true); // Sets the state true
+            selectedRow.setValue(true); // Sets the state true
 
-        // Let the manager create a registration.
-        registrationManager.createRegistration(selectedStudent, getCourseInfo(), courseRegistrationTable);
+            // Let the manager create a registration.
+            registrationManager.createRegistration(selectedStudent, getCourseInfo(), courseRegistrationTable);
+        } else {
+            System.out.println("Persoon is al geregistreerd bij deze cursus.");
+        }
     }
 
     @FXML
-    void handleUnregisterButton(ActionEvent event) { // This method handels the unregisterButton
-        System.out.println(selectedStudent.getName() + " heeft zich uit de cursus " + getCourseInfo().getCourseName() + "geschreven."); // Logs a unregistration.
+    void handleUnregisterButton(ActionEvent event) { // This method handels the unregisterButton.
+        if (checkRegistration(false)){ // Checks if the person is registerd.
+            System.out.println(selectedStudent.getName() + " heeft zich uit de cursus " + getCourseInfo().getCourseName() + "geschreven."); // Logs a unregistration.
 
-        selectedRow.setValue(false); // Sets the state false
-        
-        // let the manager delete a registration.
-        registrationManager.deleteRegistration(selectedStudent, getCourseInfo(), courseRegistrationTable);
+            selectedRow.setValue(false); // Sets the state false
+            
+            // let the manager delete a registration.
+            registrationManager.deleteRegistration(selectedStudent, getCourseInfo(), courseRegistrationTable);
+        } else {
+            System.out.println("Persoon is niet geregistreerd bij deze cursus.");
+        }
     }
 
     @FXML
