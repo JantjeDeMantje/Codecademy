@@ -17,11 +17,9 @@ public class StudentManager {
     private void createDummyData() { // This method creates the temp. dummy data
         students = new ArrayList<Student>();
 
-        students.add(new Student("Sietse 't Hooft", "sietse@gmail.com", "01-01-2004", "Man", "1234AB", "Breda",
-                "Nederland"));
+        students.add(new Student("Sietse 't Hooft", "sietse@gmail.com", "01-01-2004", "Man", "1234AB", "Breda", "Nederland"));
         students.add(new Student("Jan Roelofs", "jan@gmail.com", "01-01-2004", "Man", "4321AB", "Breda", "Nederland"));
-        students.add(
-                new Student("Gert van Dijk", "gert@gmail.com", "01-01-2004", "Man", "3412AB", "Breda", "Nederland"));
+        students.add(new Student("Gert van Dijk", "gert@gmail.com", "01-01-2004", "Man", "3412AB", "Breda", "Nederland"));
 
     }
 
