@@ -5,6 +5,8 @@ import java.util.Map;
 
 import com.codecademy.GUI;
 import com.codecademy.dataStorage.DataHolder;
+import com.codecademy.domain.Course;
+import com.codecademy.domain.Student;
 import com.codecademy.logic.RegistrationManager;
 
 import javafx.beans.property.SimpleBooleanProperty;
@@ -61,6 +63,7 @@ public class StudentRegisterScreenController {
         registrationManager = new RegistrationManager(); // Creates a new registrationManager object.
         setLabel();
         fillTable();
+        tableSelectionListener();
     }
 
     @FXML
@@ -95,6 +98,25 @@ public class StudentRegisterScreenController {
                 }
             }
         });
+    }
+
+    private void tableSelectionListener() { // This method looks if a row is selected.
+        courseRegistrationTable.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue != null) {
+                System.out.println("Selected course: "+ newValue.getKey()); // Logger for the selected courseName
+
+                handleRowSelect(registrationManager.getCourseInfo(newValue.getKey().toString()));
+            }
+        });
+    }
+
+    private void handleRowSelect(Course selectedCourse) { // This method handels the selected row.
+
+        // Sets the textfields to the data of the selected course.
+        difficultyTEXT.setText(selectedCourse.getDifficulty().toString());
+        subjectTEXT.setText(selectedCourse.getSubject());
+        nameTEXT.setText(selectedCourse.getCourseName());
+        introTextTEXT.setText(selectedCourse.getIntroductionText());
     }
 
     @FXML
