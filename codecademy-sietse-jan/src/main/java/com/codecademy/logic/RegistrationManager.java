@@ -53,4 +53,8 @@ public class RegistrationManager {
         courseRegistrationTable.refresh();
     }
 
+    public void deleteRegistration(Student student, Course course, TableView<Map.Entry<String,Boolean>> courseRegistrationTable){
+        courseRegistrationTable.refresh(); 
+    }
+
 }
