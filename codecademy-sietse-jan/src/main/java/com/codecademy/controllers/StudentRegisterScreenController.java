@@ -78,6 +78,22 @@ public class StudentRegisterScreenController {
         studentNameLAB.setText(DataHolder.getInstance().getSelectedStudent().getName());
     }
 
+    private void formatAllInformation(){ // This method formats all the information needed for the table.
+        coursesAndRegistrations = new HashMap<>();
+
+        registrationManager.getCourses().forEach(course -> {
+            coursesAndRegistrations.put(course.getCourseName(), false); // For each course, you put the courseName and a false status.
+        });
+
+        registrationManager.getRegistrations().forEach(registration -> { 
+            for(Map.Entry<String,Boolean> entry : coursesAndRegistrations.entrySet()){
+                if (entry.getKey() == registration.getCourse().getCourseName()){ // When the course has a registration, the status will be true.
+                    entry.setValue(true); // Makes the status true
+                }
+            }
+        });
+    }
+
     @FXML
     void handleRegisterButton(ActionEvent event) {
 
