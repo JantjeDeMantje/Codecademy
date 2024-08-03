@@ -3,6 +3,7 @@ package com.codecademy.controllers;
 import java.util.Date;
 
 import com.codecademy.GUI;
+import com.codecademy.dataStorage.DataHolder;
 import com.codecademy.domain.Student;
 import com.codecademy.logic.StudentManager;
 
@@ -143,7 +144,9 @@ public class StudentScreenController {
             System.out.println("No student selected.");
             return;
         }
+
         System.out.println("Selected student: " + selectedStudent.getName());
+        DataHolder.getInstance().setSelectedStudent(selectedStudent);
         GUI.instance.setRoot("StudentRegisterScreen.fxml");
     }
 
