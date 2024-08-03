@@ -1,10 +1,14 @@
 package com.codecademy.logic;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 import com.codecademy.dataStorage.DataHolder;
 import com.codecademy.domain.Course;
 import com.codecademy.domain.Registration;
+import com.codecademy.domain.Student;
+
+import javafx.scene.control.TableView;
 
 public class RegistrationManager {
     private CourseManager courseManager;
@@ -43,6 +47,10 @@ public class RegistrationManager {
             }
         }
         return null; // No match? --> null
+    }
+
+    public void createRegistration(Student student, Course course, TableView<Map.Entry<String,Boolean>> courseRegistrationTable ){
+        courseRegistrationTable.refresh();
     }
 
 }
