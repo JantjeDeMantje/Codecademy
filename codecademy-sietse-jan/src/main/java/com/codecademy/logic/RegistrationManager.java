@@ -20,6 +20,9 @@ public class RegistrationManager {
         registrations.add(new Registration(new Course("Course 2", "Subject 2", "Introduction text 2", Difficulty.Gevorderd), false));
         registrations.add(new Registration(new Course("Course 3", "Subject 3", "Introduction text 3", Difficulty.Expert), true));
 
+    private void loadCourseManager(){
+        courseManager = new CourseManager();
+        this.courses = courseManager.getCourses();
     }
 
     public ArrayList<Registration> getRegistrations() {
