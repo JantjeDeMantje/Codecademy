@@ -1,15 +1,20 @@
 package com.codecademy.logic;
 
 import java.util.ArrayList;
+import java.util.List;
 
+import com.codecademy.dataStorage.DataHolder;
 import com.codecademy.domain.Course;
-import com.codecademy.domain.Difficulty;
 import com.codecademy.domain.Registration;
 
 public class RegistrationManager {
-    private ArrayList<Registration> registrations;
+    private CourseManager courseManager;
 
+    private ArrayList<Registration> registrations = new ArrayList<>();
+    private ArrayList<Course> courses = new ArrayList<>();
+    
     public RegistrationManager() {
+        loadCourseManager();
         createDummyData();
     }
 
