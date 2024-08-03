@@ -5,17 +5,11 @@ public class Registration {
     private Student student;
     private Course course;
     private String registrationDate;
-    private Boolean registered;
 
     public Registration(Student student, Course course, String registrationDate) {
         this.student = student;
         this.course = course;
         this.registrationDate = registrationDate;
-    }
-
-    public Registration(Course course, Boolean registered) {
-        this.course = course;
-        this.registered = registered;
     }
 
     public Student getStudent() {
@@ -41,8 +35,5 @@ public class Registration {
     public void setRegistrationDate(String registrationDate) {
         this.registrationDate = registrationDate;
     }
-    
-    public Boolean getRegistered() {
-        return registered;
-    }
+
 }
