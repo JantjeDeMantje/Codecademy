@@ -142,8 +142,13 @@ public class StudentRegisterScreenController {
     }
 
     @FXML
-    void handleUnregisterButton(ActionEvent event) {
+    void handleUnregisterButton(ActionEvent event) { // This method handels the unregisterButton
+        System.out.println(selectedStudent.getName() + " heeft zich uit de cursus " + getCourseInfo().getCourseName() + "geschreven."); // Logs a unregistration.
 
+        selectedRow.setValue(false); // Sets the state false
+        
+        // let the manager delete a registration.
+        registrationManager.deleteRegistration(selectedStudent, getCourseInfo(), courseRegistrationTable);
     }
 
     @FXML
