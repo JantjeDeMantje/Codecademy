@@ -3,6 +3,7 @@ package com.codecademy.controllers;
 import java.util.List;
 
 import com.codecademy.GUI;
+import com.codecademy.dataStorage.DataHolder;
 import com.codecademy.domain.Registration;
 import com.codecademy.logic.RegistrationManager;
 
@@ -74,6 +75,7 @@ public class StudentRegisterScreenController {
     }
 
     private void setLabel() {
+        studentNameLAB.setText(DataHolder.getInstance().getSelectedStudent().getName());
     }
 
     @FXML
