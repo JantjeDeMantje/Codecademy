@@ -3,7 +3,6 @@ package com.codecademy.controllers;
 import java.util.Date;
 
 import com.codecademy.GUI;
-import com.codecademy.domain.Course;
 import com.codecademy.domain.Student;
 import com.codecademy.logic.StudentManager;
 
@@ -18,6 +17,8 @@ import javafx.scene.control.cell.PropertyValueFactory;
 public class StudentScreenController {
 
     private StudentManager studentManager;
+
+    private Student selectedStudent;
 
     @FXML
     private TableView<Student> studentTable;
@@ -86,12 +87,6 @@ public class StudentScreenController {
         birthdateColumn.setCellValueFactory(new PropertyValueFactory<>("birthdate"));
     }
 
-    @FXML
-    private void handleBackButton(ActionEvent event) { // This method handles the back button.
-        System.out.println("Back button clicked"); // Logs the activation of the back button.
-        GUI.instance.setRoot("homeScreen.fxml"); // Loads the new fxml in.
-    }
-
     private void tableSelectionListener() { // This method looks if a row is selected.
         studentTable.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue != null) {
@@ -103,6 +98,9 @@ public class StudentScreenController {
     private void handleRowSelect(Student selectedStudent) { // This method handels the selected row.
         System.out.println("Selected student: " + selectedStudent.getName()); // Logs the selected courseName
 
+        this.selectedStudent = selectedStudent; // Sets the selected student to the selected student in the table.
+
+        // Sets the textfields to the data of the selected student.
         nameTEXT.setText(selectedStudent.getName());
         emailTEXT.setText(selectedStudent.getEmail());
         birthdateTEXT.setText(selectedStudent.getBirthdate());
@@ -113,53 +111,46 @@ public class StudentScreenController {
     }
 
     @FXML
-    void handleCreateButton(ActionEvent event) {
-        String studentName = nameTEXT.getText();
-        String studentEmail = emailTEXT.getText();
-        String studentBirthdate = birthdateTEXT.getText();
-        String studentGender = genderTEXT.getText();
-        String studentPostcode = postcodeTEXT.getText();
-        String studentCity = cityTEXT.getText();
-        String studentCountry = countryTEXT.getText();
+    private void handleBackButton(ActionEvent event) { // This method handles the back button.
+        System.out.println("Back button clicked"); // Logs the activation of the back button.
+        GUI.instance.setRoot("homeScreen.fxml"); // Loads the new fxml in.
+    }
 
-        Student newStudent = new Student(studentName, studentEmail, studentBirthdate, studentGender, studentPostcode, studentCity, studentCountry);
-        System.out.println(newStudent.getName());
+    @FXML
+    void handleCreateButton(ActionEvent event) { // This method handles the create button.
 
-        studentTable.getItems().add(newStudent);
+        Student newStudent = studentManager.createStudent(
+                nameTEXT.getText(), emailTEXT.getText(),
+                birthdateTEXT.getText(), genderTEXT.getText(),
+                postcodeTEXT.getText(), cityTEXT.getText(),
+                countryTEXT.getText(), studentTable);
+
+        System.out.println("CreateStudentButton pressed: " + newStudent.getName()); // Logs the name of the new student
+    }
+
+    @FXML
+    void handleDeleteButton(ActionEvent event) { // This method handles the delete button.
+        studentManager.deleteStudent(selectedStudent, studentTable); // Removes the selected student from the table.
+
+        // Logs the name of the deleted student
+        System.out.println("DeleteStudentButton pressed: " + selectedStudent.getName());
+    }
+
+    @FXML
+    void handleRegisterButton(ActionEvent event) { // This method handles the register button.
 
     }
 
     @FXML
-    void handleDeleteButton(ActionEvent event) {
-        Student selectedStudent = studentTable.getSelectionModel().getSelectedItem();
-        studentTable.getItems().remove(selectedStudent);
+    void handleUpdateButton(ActionEvent event) { // This method handles the update button.
+        studentManager.updateStudent(
+                selectedStudent, nameTEXT.getText(), emailTEXT.getText(),
+                birthdateTEXT.getText(), genderTEXT.getText(),
+                postcodeTEXT.getText(), cityTEXT.getText(),
+                countryTEXT.getText(), studentTable);
 
-    }
-
-    @FXML
-    void handleRegisterButton(ActionEvent event) {
-        Student selectedStudent = studentTable.getSelectionModel().getSelectedItem();
-        if (selectedStudent == null) {
-            System.out.println("No student selected.");
-            return;
-        }
-        System.out.println("Selected student: " + selectedStudent.getName());
-        GUI.instance.setRoot("StudentRegisterScreen.fxml");
-    }
-    
-
-    @FXML
-    void handleUpdateButton(ActionEvent event) {
-        Student selectedStudent = studentTable.getSelectionModel().getSelectedItem();
-        selectedStudent.setName(nameTEXT.getText());
-        selectedStudent.setEmail(emailTEXT.getText());
-        selectedStudent.setBirthdate(birthdateTEXT.getText());
-        selectedStudent.setGender(genderTEXT.getText());
-        selectedStudent.setPostcode(postcodeTEXT.getText());
-        selectedStudent.setCity(cityTEXT.getText());
-        selectedStudent.setCountry(countryTEXT.getText());
-        studentTable.refresh();
-
+        // Logs the name of the updated student
+        System.out.println("UpdateStudentButton pressed: " + selectedStudent.getName());
     }
 
 }
