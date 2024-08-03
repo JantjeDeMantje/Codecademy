@@ -1,13 +1,9 @@
 package com.codecademy.controllers;
 
-import java.net.URL;
 import java.util.List;
-import java.util.ResourceBundle;
 
 import com.codecademy.GUI;
-import com.codecademy.domain.Course;
 import com.codecademy.domain.Registration;
-import com.codecademy.domain.Student;
 import com.codecademy.logic.RegistrationManager;
 
 import javafx.event.ActionEvent;
