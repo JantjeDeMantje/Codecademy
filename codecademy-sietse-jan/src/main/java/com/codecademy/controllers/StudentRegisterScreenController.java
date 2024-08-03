@@ -51,8 +51,12 @@ public class StudentRegisterScreenController {
     @FXML
     private Button backBTN;
 
+    @FXML
+    private Text studentNameLAB;
+
     public void initialize() { // This method initializes the course screen.
         registrationManager = new RegistrationManager(); // Creates a new registrationManager object.
+        setLabel();
         fillTable();
     }
 
@@ -67,6 +71,9 @@ public class StudentRegisterScreenController {
         // Set cell value factories for each column
         courseNameColumn.setCellValueFactory(new PropertyValueFactory<>("course"));
         registrationStateColumn.setCellValueFactory(new PropertyValueFactory<>("registered"));
+    }
+
+    private void setLabel() {
     }
 
     @FXML
