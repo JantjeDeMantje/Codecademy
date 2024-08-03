@@ -26,7 +26,7 @@
       </Text>
       <Line endX="499.0" layoutX="701.0" layoutY="46.0" startX="-100.0" AnchorPane.topAnchor="60.0" />
       <Line endX="499.0" layoutX="701.0" layoutY="501.0" startX="-100.0" />
-      <Button fx:id="registerBTN" layoutX="641.0" layoutY="551.0" mnemonicParsing="false" onAction="#handleRegisterButton" prefHeight="100.0" prefWidth="221.0" text="Inschrjiven" AnchorPane.bottomAnchor="49.0" AnchorPane.leftAnchor="641.0">
+      <Button fx:id="registerBTN" layoutX="641.0" layoutY="551.0" mnemonicParsing="false" onAction="#handleRegisterButton" prefHeight="100.0" prefWidth="221.0" text="Inschrijven" AnchorPane.bottomAnchor="49.0" AnchorPane.leftAnchor="641.0">
          <font>
             <Font size="24.0" />
          </font>
