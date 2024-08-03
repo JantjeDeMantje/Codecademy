@@ -138,7 +138,13 @@ public class StudentScreenController {
 
     @FXML
     void handleRegisterButton(ActionEvent event) { // This method handles the register button.
-
+        Student selectedStudent = studentTable.getSelectionModel().getSelectedItem();
+        if (selectedStudent == null) {
+            System.out.println("No student selected.");
+            return;
+        }
+        System.out.println("Selected student: " + selectedStudent.getName());
+        GUI.instance.setRoot("StudentRegisterScreen.fxml");
     }
 
     @FXML
