@@ -31,10 +31,10 @@ public class StudentManager {
     }
 
     // This method creates a new student object
-    public Student createStudent(String name, String email, String birthdate, String gender, String postcode,
+    public Student createStudent(String name, String email, String birthdate, String gender, String zipcode,
             String city, String country, TableView<Student> studentTable) {
 
-        Student newStudent = new Student(name, email, birthdate, gender, postcode, city, country);
+        Student newStudent = new Student(name, email, birthdate, gender, zipcode, city, country);
 
         studentTable.getItems().add(newStudent); // Adds the new student to the table
         return newStudent;
@@ -47,12 +47,12 @@ public class StudentManager {
 
     // This method updates a student object
     public void updateStudent(Student student, String name, String email, String birthdate, String gender,
-            String postcode, String city, String country, TableView<Student> studentTable) {
+            String zipcode, String city, String country, TableView<Student> studentTable) {
         student.setName(name);
         student.setEmail(email);
         student.setBirthdate(birthdate);
         student.setGender(gender);
-        student.setPostcode(postcode);
+        student.setZipcode(zipcode);
         student.setCity(city);
         student.setCountry(country);
         studentTable.refresh(); // Refreshes the table

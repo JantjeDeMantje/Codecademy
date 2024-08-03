@@ -51,7 +51,7 @@ public class StudentScreenController {
     private TextField nameTEXT;
 
     @FXML
-    private TextField postcodeTEXT;
+    private TextField zipcodeTEXT;
 
     @FXML
     private TextField emailTEXT;
@@ -105,7 +105,7 @@ public class StudentScreenController {
         emailTEXT.setText(selectedStudent.getEmail());
         birthdateTEXT.setText(selectedStudent.getBirthdate());
         genderTEXT.setText(selectedStudent.getGender());
-        postcodeTEXT.setText(selectedStudent.getPostcode());
+        zipcodeTEXT.setText(selectedStudent.getZipcode());
         cityTEXT.setText(selectedStudent.getCity());
         countryTEXT.setText(selectedStudent.getCountry());
     }
@@ -122,7 +122,7 @@ public class StudentScreenController {
         Student newStudent = studentManager.createStudent(
                 nameTEXT.getText(), emailTEXT.getText(),
                 birthdateTEXT.getText(), genderTEXT.getText(),
-                postcodeTEXT.getText(), cityTEXT.getText(),
+                zipcodeTEXT.getText(), cityTEXT.getText(),
                 countryTEXT.getText(), studentTable);
 
         System.out.println("CreateStudentButton pressed: " + newStudent.getName()); // Logs the name of the new student
@@ -152,7 +152,7 @@ public class StudentScreenController {
         studentManager.updateStudent(
                 selectedStudent, nameTEXT.getText(), emailTEXT.getText(),
                 birthdateTEXT.getText(), genderTEXT.getText(),
-                postcodeTEXT.getText(), cityTEXT.getText(),
+                zipcodeTEXT.getText(), cityTEXT.getText(),
                 countryTEXT.getText(), studentTable);
 
         // Logs the name of the updated student
