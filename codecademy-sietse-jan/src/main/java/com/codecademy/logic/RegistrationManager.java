@@ -14,11 +14,10 @@ public class RegistrationManager {
     }
 
     private void createDummyData() { // This method creates the temp. dummy data
-        registrations = new ArrayList<Registration>();
-
-        registrations.add(new Registration(new Course("Course 3", "Subject 3", "Introduction text 3", Difficulty.Expert), false));
-        registrations.add(new Registration(new Course("Course 2", "Subject 2", "Introduction text 2", Difficulty.Gevorderd), false));
-        registrations.add(new Registration(new Course("Course 3", "Subject 3", "Introduction text 3", Difficulty.Expert), true));
+        registrations.add(new Registration(DataHolder.getInstance().getSelectedStudent(), courses.get(1), "20-03-2024"));
+        registrations.add(new Registration(DataHolder.getInstance().getSelectedStudent(), courses.get(3), "24-05-2024"));
+        registrations.add(new Registration(DataHolder.getInstance().getSelectedStudent(), courses.get(4), "01-08-2024"));
+    }
 
     private void loadCourseManager(){
         courseManager = new CourseManager();
