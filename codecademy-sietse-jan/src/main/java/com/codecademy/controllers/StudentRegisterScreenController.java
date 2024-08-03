@@ -1,35 +1,37 @@
 package com.codecademy.controllers;
 
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 import com.codecademy.GUI;
 import com.codecademy.dataStorage.DataHolder;
-import com.codecademy.domain.Registration;
 import com.codecademy.logic.RegistrationManager;
 
+import javafx.beans.property.SimpleBooleanProperty;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.text.Text;
 
 public class StudentRegisterScreenController {
 
     private RegistrationManager registrationManager;
 
-    @FXML
-    private TableView<Registration> courseRegistrationTable;
+    private HashMap<String, Boolean> coursesAndRegistrations;
 
     @FXML
-    private TableColumn<Registration, CheckBox> registrationStateColumn;
+    private TableView<Map.Entry<String,Boolean>> courseRegistrationTable;
 
     @FXML
-    private TableColumn<Registration, String> courseNameColumn;
+    private TableColumn<Map.Entry<String,Boolean>, Boolean> registrationStateColumn;
+
+    @FXML
+    private TableColumn<Map.Entry<String,Boolean>, String> courseNameColumn;
 
     @FXML
     private TextField difficultyTEXT;
@@ -62,19 +64,20 @@ public class StudentRegisterScreenController {
     }
 
     @FXML
-    private void fillTable() { // This method fills the table with the data from the registrationManager.
-        List<Registration> registrations = registrationManager.getRegistrations();
+    private void fillTable() { // This method fills the table with the data from the registrationManager. 
+        
+        formatAllInformation(); 
 
-        registrations.forEach(registration -> { // Adds all the data from the arraylist to the table.
-            courseRegistrationTable.getItems().add(registration);
-        });
+        for (Map.Entry<String,Boolean> entry : coursesAndRegistrations.entrySet()) { 
+            courseRegistrationTable.getItems().add(entry);
+        }
 
         // Set cell value factories for each column
-        courseNameColumn.setCellValueFactory(new PropertyValueFactory<>("course"));
-        registrationStateColumn.setCellValueFactory(new PropertyValueFactory<>("registered"));
+        courseNameColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getKey()));
+        registrationStateColumn.setCellValueFactory(cellData -> new SimpleBooleanProperty(cellData.getValue().getValue()));
     }
 
-    private void setLabel() {
+    private void setLabel() { // This method sets the right student name to the studentNameLabel.
         studentNameLAB.setText(DataHolder.getInstance().getSelectedStudent().getName());
     }
 
@@ -108,6 +111,5 @@ public class StudentRegisterScreenController {
     void handleBackButton(ActionEvent event) {
         System.out.println("Back button clicked"); // Logs the activation of the back button.
         GUI.instance.setRoot("studentScreen.fxml"); // Loads the new fxml in.
-
     }
 }
