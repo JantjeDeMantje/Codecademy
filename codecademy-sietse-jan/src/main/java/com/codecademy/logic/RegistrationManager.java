@@ -23,7 +23,7 @@ public class RegistrationManager {
         registrations.add(new Registration(DataHolder.getInstance().getSelectedStudent(), courses.get(4), "01-08-2024"));
     }
 
-    private void loadCourseManager(){
+    private void loadCourseManager(){ // This method loads all information needed from the courseManager.
         courseManager = new CourseManager();
         this.courses = courseManager.getCourses();
     }
@@ -34,6 +34,15 @@ public class RegistrationManager {
 
     public ArrayList<Course> getCourses(){
         return courses;
+    }
+
+    public Course getCourseInfo(String courseName){ // This method sends all the course information that match with the courseName.
+        for (Course course : courses ){
+            if (course.getCourseName() == courseName) {
+                        return course;
+            }
+        }
+        return null; // No match? --> null
     }
 
 }
