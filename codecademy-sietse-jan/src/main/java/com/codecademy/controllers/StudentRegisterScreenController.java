@@ -106,6 +106,10 @@ public class StudentRegisterScreenController {
         selectedStudent = DataHolder.getInstance().getSelectedStudent();
     }
 
+    private Course getCourseInfo(){ // This method return the Course you got from the manager.
+        return registrationManager.getCourseInfo(selectedRow.getKey().toString());
+    }
+
 
 
     private void tableSelectionListener() { // This method looks if a row is selected.
