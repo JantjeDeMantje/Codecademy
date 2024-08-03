@@ -100,6 +100,14 @@ public class StudentRegisterScreenController {
         });
     }
 
+    
+
+    private void getinformation(){ // This method gets all information from the dataholder. (last screen)
+        selectedStudent = DataHolder.getInstance().getSelectedStudent();
+    }
+
+
+
     private void tableSelectionListener() { // This method looks if a row is selected.
         courseRegistrationTable.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue != null) {
