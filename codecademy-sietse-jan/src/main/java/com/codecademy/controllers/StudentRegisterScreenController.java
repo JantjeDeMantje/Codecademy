@@ -132,8 +132,13 @@ public class StudentRegisterScreenController {
     }
 
     @FXML
-    void handleRegisterButton(ActionEvent event) {
+    void handleRegisterButton(ActionEvent event) { // This method handels the registerButton
+        System.out.println(selectedStudent.getName() + " heeft zich in de cursus " + getCourseInfo().getCourseName() + "geschreven."); // Logs a registration.
 
+        selectedRow.setValue(true); // Sets the state true
+
+        // Let the manager create a registration.
+        registrationManager.createRegistration(selectedStudent, getCourseInfo(), courseRegistrationTable);
     }
 
     @FXML
