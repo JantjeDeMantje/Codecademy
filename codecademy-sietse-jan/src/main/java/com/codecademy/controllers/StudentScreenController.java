@@ -75,7 +75,7 @@ public class StudentScreenController {
     }
 
     @FXML
-    private void fillTable() { // This method fills the table with the data from the courseManager.
+    private void fillTable() { // This method fills the table with the data from the studentManager.
 
         studentManager.getStudents().forEach(student -> { // Adds all the data from the arraylist to the table.
             studentTable.getItems().add(student);
@@ -96,7 +96,7 @@ public class StudentScreenController {
     }
 
     private void handleRowSelect(Student selectedStudent) { // This method handels the selected row.
-        System.out.println("Selected student: " + selectedStudent.getName()); // Logs the selected courseName
+        System.out.println("Selected student: " + selectedStudent.getName()); // Logs the selected studentName
 
         this.selectedStudent = selectedStudent; // Sets the selected student to the selected student in the table.
 

@@ -24,13 +24,13 @@ import javafx.scene.text.Text;
 public class StudentRegisterScreenController {
 
     private RegistrationManager registrationManager;
-    
+
     @FXML
     private TableView<Registration> courseRegistrationTable;
 
     @FXML
     private TableColumn<Registration, CheckBox> registrationStateColumn;
-   
+
     @FXML
     private TableColumn<Registration, String> courseNameColumn;
 
@@ -55,24 +55,23 @@ public class StudentRegisterScreenController {
     @FXML
     private Button backBTN;
 
-public void initialize() { // This method initializes the course screen.
-    registrationManager = new RegistrationManager(); // Creates a new courseManager object.
-    fillTable();
-}
+    public void initialize() { // This method initializes the course screen.
+        registrationManager = new RegistrationManager(); // Creates a new registrationManager object.
+        fillTable();
+    }
 
-@FXML
-private void fillTable() { // This method fills the table with the data from the courseManager.
-    List<Registration> registrations = registrationManager.getRegistrations();
+    @FXML
+    private void fillTable() { // This method fills the table with the data from the registrationManager.
+        List<Registration> registrations = registrationManager.getRegistrations();
 
-    registrations.forEach(registration -> { // Adds all the data from the arraylist to the table.
-        courseRegistrationTable.getItems().add(registration);
-    });
+        registrations.forEach(registration -> { // Adds all the data from the arraylist to the table.
+            courseRegistrationTable.getItems().add(registration);
+        });
 
-    // Set cell value factories for each column
-    courseNameColumn.setCellValueFactory(new PropertyValueFactory<>("course"));
-    registrationStateColumn.setCellValueFactory(new PropertyValueFactory<>("registered"));
-}
-
+        // Set cell value factories for each column
+        courseNameColumn.setCellValueFactory(new PropertyValueFactory<>("course"));
+        registrationStateColumn.setCellValueFactory(new PropertyValueFactory<>("registered"));
+    }
 
     @FXML
     void handleRegisterButton(ActionEvent event) {
