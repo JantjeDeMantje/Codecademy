@@ -49,7 +49,7 @@
             <Font size="24.0" />
          </font>
       </Text>
-      <Text fx:id="postcodeLAB" layoutX="640.0" layoutY="343.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Postcode:" wrappingWidth="200.0" AnchorPane.topAnchor="300.0">
+      <Text fx:id="zipcodeLAB" layoutX="640.0" layoutY="343.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Postcode:" wrappingWidth="200.0" AnchorPane.topAnchor="300.0">
          <font>
             <Font size="24.0" />
          </font>
@@ -85,7 +85,7 @@
             <Font size="18.0" />
          </font>
       </TextField>
-      <TextField fx:id="postcodeTEXT" layoutX="960.0" layoutY="296.0" prefHeight="25.0" prefWidth="200.0">
+      <TextField fx:id="zipcodeTEXT" layoutX="960.0" layoutY="296.0" prefHeight="25.0" prefWidth="200.0">
          <font>
             <Font size="18.0" />
          </font>

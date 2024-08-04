@@ -6,16 +6,17 @@ public class Student {
     private String email;
     private String birthdate;
     private String gender;
-    private String postcode;
+    private String zipcode;
     private String city;
     private String country;
 
-    public Student(String name, String email, String birthdate, String gender, String postcode, String city, String country) {
+    public Student(String name, String email, String birthdate, String gender, String zipcode, String city,
+            String country) {
         this.name = name;
         this.email = email;
         this.birthdate = birthdate;
         this.gender = gender;
-        this.postcode = postcode;
+        this.zipcode = zipcode;
         this.city = city;
         this.country = country;
     }
@@ -52,12 +53,12 @@ public class Student {
         this.gender = gender;
     }
 
-    public String getPostcode() {
-        return postcode;
+    public String getZipcode() {
+        return zipcode;
     }
 
-    public void setPostcode(String postcode) {
-        this.postcode = postcode;
+    public void setZipcode(String zipcode) {
+        this.zipcode = zipcode;
     }
 
     public String getCity() {
@@ -76,6 +77,4 @@ public class Student {
         this.country = country;
     }
 
-    
-    
 }

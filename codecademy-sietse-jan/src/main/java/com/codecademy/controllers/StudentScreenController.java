@@ -3,6 +3,7 @@ package com.codecademy.controllers;
 import java.util.Date;
 
 import com.codecademy.GUI;
+import com.codecademy.dataStorage.DataHolder;
 import com.codecademy.domain.Student;
 import com.codecademy.logic.StudentManager;
 
@@ -51,7 +52,7 @@ public class StudentScreenController {
     private TextField nameTEXT;
 
     @FXML
-    private TextField postcodeTEXT;
+    private TextField zipcodeTEXT;
 
     @FXML
     private TextField emailTEXT;
@@ -75,7 +76,7 @@ public class StudentScreenController {
     }
 
     @FXML
-    private void fillTable() { // This method fills the table with the data from the courseManager.
+    private void fillTable() { // This method fills the table with the data from the studentManager.
 
         studentManager.getStudents().forEach(student -> { // Adds all the data from the arraylist to the table.
             studentTable.getItems().add(student);
@@ -96,7 +97,7 @@ public class StudentScreenController {
     }
 
     private void handleRowSelect(Student selectedStudent) { // This method handels the selected row.
-        System.out.println("Selected student: " + selectedStudent.getName()); // Logs the selected courseName
+        System.out.println("Selected student: " + selectedStudent.getName()); // Logs the selected studentName
 
         this.selectedStudent = selectedStudent; // Sets the selected student to the selected student in the table.
 
@@ -105,7 +106,7 @@ public class StudentScreenController {
         emailTEXT.setText(selectedStudent.getEmail());
         birthdateTEXT.setText(selectedStudent.getBirthdate());
         genderTEXT.setText(selectedStudent.getGender());
-        postcodeTEXT.setText(selectedStudent.getPostcode());
+        zipcodeTEXT.setText(selectedStudent.getZipcode());
         cityTEXT.setText(selectedStudent.getCity());
         countryTEXT.setText(selectedStudent.getCountry());
     }
@@ -122,7 +123,7 @@ public class StudentScreenController {
         Student newStudent = studentManager.createStudent(
                 nameTEXT.getText(), emailTEXT.getText(),
                 birthdateTEXT.getText(), genderTEXT.getText(),
-                postcodeTEXT.getText(), cityTEXT.getText(),
+                zipcodeTEXT.getText(), cityTEXT.getText(),
                 countryTEXT.getText(), studentTable);
 
         System.out.println("CreateStudentButton pressed: " + newStudent.getName()); // Logs the name of the new student
@@ -138,7 +139,15 @@ public class StudentScreenController {
 
     @FXML
     void handleRegisterButton(ActionEvent event) { // This method handles the register button.
+        Student selectedStudent = studentTable.getSelectionModel().getSelectedItem();
+        if (selectedStudent == null) {
+            System.out.println("No student selected.");
+            return;
+        }
 
+        System.out.println("Selected student: " + selectedStudent.getName());
+        DataHolder.getInstance().setSelectedStudent(selectedStudent);
+        GUI.instance.setRoot("StudentRegisterScreen.fxml");
     }
 
     @FXML
@@ -146,7 +155,7 @@ public class StudentScreenController {
         studentManager.updateStudent(
                 selectedStudent, nameTEXT.getText(), emailTEXT.getText(),
                 birthdateTEXT.getText(), genderTEXT.getText(),
-                postcodeTEXT.getText(), cityTEXT.getText(),
+                zipcodeTEXT.getText(), cityTEXT.getText(),
                 countryTEXT.getText(), studentTable);
 
         // Logs the name of the updated student
