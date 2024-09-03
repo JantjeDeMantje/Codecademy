@@ -9,17 +9,17 @@ import com.codecademy.domain.WatchPercentage;
 public class WatchProgressManager {
 
     private ArrayList<WatchPercentage> watchPercentages;
-    private ArrayList<Course> courses;
     private ArrayList<Student> students;
-
-    private CourseManager courseManager;
+    private ArrayList<Module> modules;
     private StudentManager studentManager;
+    private ModuleManager moduleManager;
 
     public WatchProgressManager() {
         watchPercentages = new ArrayList<>();
-        loadCourseManager();
         loadStudentManager();
+        loadModuleManager();
         createDummyData();
+        getAverageWatchPercentagePerStudent();
     }
 
     private void createDummyData() {
