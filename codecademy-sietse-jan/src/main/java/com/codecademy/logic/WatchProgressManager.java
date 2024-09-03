@@ -1,6 +1,8 @@
 package com.codecademy.logic;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import com.codecademy.domain.Student;
 import com.codecademy.domain.WatchPercentage;
@@ -42,6 +44,29 @@ public class WatchProgressManager {
 
     public ArrayList<WatchPercentage> getWatchPercentages() {
         return watchPercentages;
+    }
+
+    public Map<Student, Double> getAverageWatchPercentagePerStudent() { // Calculates the average watch percentage per student.
+        Map<Student, Double> averageWatchPercentages = new HashMap<>();
+        Map<Student, Double> totalWatchPercentages = new HashMap<>();
+        Map<Student, Integer> countWatchPercentages = new HashMap<>();
+
+        for (WatchPercentage wp : watchPercentages) { // Reads all watch percentages and adds them to the total and count per Student.
+            Student student = wp.getStudent();
+            double percentage = wp.getWatchPercentage();
+
+            totalWatchPercentages.put(student, totalWatchPercentages.getOrDefault(student, 0.0) + percentage);
+            countWatchPercentages.put(student, countWatchPercentages.getOrDefault(student, 0) + 1);
+        }
+
+        for (Student student : totalWatchPercentages.keySet()) { // Calculates the average watch percentage per student.
+            double total = totalWatchPercentages.get(student);
+            int count = countWatchPercentages.get(student);
+            double average = Math.round((total / count) * 10.0) / 10.0;
+            averageWatchPercentages.put(student, average);
+        }
+
+        return averageWatchPercentages;
     }
     
 }
