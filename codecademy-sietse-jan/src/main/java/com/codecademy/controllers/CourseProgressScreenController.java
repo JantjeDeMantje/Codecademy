@@ -1,12 +1,16 @@
 package com.codecademy.controllers;
 
+import java.util.Map;
+
 import com.codecademy.GUI;
 import com.codecademy.dataStorage.DataHolder;
 import com.codecademy.domain.Course;
 import com.codecademy.domain.WatchPercentage;
 import com.codecademy.logic.CourseProgressManager;
 import com.codecademy.domain.Module;
+import com.codecademy.domain.Student;
 
+import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -55,7 +59,7 @@ public class CourseProgressScreenController {
     private TableColumn<Module, Integer> modulesColumn;
 
     @FXML
-    private TableColumn<WatchPercentage, Integer> progressColumn1;
+    private TableColumn<WatchPercentage, Double> progressColumn1;
 
     @FXML
     private TableColumn<Module, Integer> progressColumn2;
@@ -94,13 +98,15 @@ public class CourseProgressScreenController {
     }
 
     private void fillStudentsTable() { // This method fills the table with the data from the courseProgressManager.
-        courseProgressManager.getWatchPercentages().forEach(watchPercentage -> { // Adds all the data from the arraylist to the table.
-            studentsProgressTable.getItems().add(watchPercentage);
+        Map<Student, Double> averageWatchPercentages = courseProgressManager.getAverageWatchPercentages(); // Gets the average watch percentages from the courseProgressManager.
 
+        averageWatchPercentages.forEach((student, averagePercentage) -> {
+            WatchPercentage wp = new WatchPercentage(student, null, averagePercentage); // Makes a new watchPercentage object, so it can be added to the table.
+            studentsProgressTable.getItems().add(wp);
         });
 
         studentsColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getStudent().getName()));
-        progressColumn1.setCellValueFactory(new PropertyValueFactory<>("watchPercentage"));
+        progressColumn1.setCellValueFactory(cellData -> new SimpleDoubleProperty(cellData.getValue().getWatchPercentage()).asObject());
     }
 
     private void fillModulesTable() { // This method fills the table with the data from the courseProgressManager.
@@ -110,7 +116,7 @@ public class CourseProgressScreenController {
 
         modulesColumn.setCellValueFactory(new PropertyValueFactory<>("title"));
     }
-
+    
 
     @FXML
     void handleBackButton(ActionEvent event) {// This method handles the back button.
