@@ -23,7 +23,4 @@ public class ModuleManager {
     public ArrayList<Module> getModules() {
         return modules;
     }
-
-
-    
 }

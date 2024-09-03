@@ -11,7 +11,6 @@ import com.codecademy.domain.WatchPercentage;
 
 public class CourseProgressManager {
 
-    private ModuleManager moduleManager;
     private WatchProgressManager watchProgressManager;
 
     private ArrayList<Module> modules;
@@ -19,19 +18,15 @@ public class CourseProgressManager {
     private Map<Student, Double> averageWatchPercentages;
 
     public CourseProgressManager(Course course) {
-        loadModuleManager();
         loadWatchProgressManager();
-    }
-
-    private void loadModuleManager() { // Loads all modules
-        moduleManager = new ModuleManager();
-        this.modules = moduleManager.getModules();
     }
 
     private void loadWatchProgressManager() { // Loads all watchProgresses
         watchProgressManager = new WatchProgressManager();
         this.watchPercentages = watchProgressManager.getWatchPercentages();
         this.averageWatchPercentages = watchProgressManager.getAverageWatchPercentagePerStudent();
+
+        this.modules = watchProgressManager.getModules(); // Loads all the modules from the ModuleManager.
     }
 
     public ArrayList<Module> getModules() {

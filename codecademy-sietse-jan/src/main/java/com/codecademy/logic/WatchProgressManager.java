@@ -68,5 +68,8 @@ public class WatchProgressManager {
 
         return averageWatchPercentages;
     }
-    
+
+    public ArrayList<Module> getModules() {
+        return modules;
+    }  
 }
