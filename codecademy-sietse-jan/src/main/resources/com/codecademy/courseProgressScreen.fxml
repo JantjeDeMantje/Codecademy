@@ -128,7 +128,7 @@
                                     <Insets left="25.0" />
                                  </GridPane.margin>
                               </Label>
-                              <TextField fx:id="achievedCountTV" GridPane.columnIndex="1">
+                              <TextField fx:id="achievedCountTV" GridPane.columnIndex="1" editable="false">
                                  <GridPane.margin>
                                     <Insets right="25.0" />
                                  </GridPane.margin>
@@ -136,7 +136,7 @@
                                     <Font size="15.0" />
                                  </font>
                               </TextField>
-                              <TextField fx:id="subjectTV" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                              <TextField fx:id="subjectTV" GridPane.columnIndex="1" GridPane.rowIndex="1" editable="false">
                                  <GridPane.margin>
                                     <Insets right="25.0" />
                                  </GridPane.margin>
@@ -144,7 +144,7 @@
                                     <Font size="15.0" />
                                  </font>
                               </TextField>
-                              <TextField fx:id="difficultyTV" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                              <TextField fx:id="difficultyTV" GridPane.columnIndex="1" GridPane.rowIndex="2" editable="false">
                                  <GridPane.margin>
                                     <Insets right="25.0" />
                                  </GridPane.margin>
@@ -171,7 +171,7 @@
                                     <Insets left="25.0" />
                                  </GridPane.margin>
                               </Label>
-                              <TextArea fx:id="introtextTV" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1" wrapText="true">
+                              <TextArea fx:id="introtextTV" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1" wrapText="true" editable="false">
                                  <GridPane.margin>
                                     <Insets bottom="100.0" left="25.0" right="25.0" />
                                  </GridPane.margin>
