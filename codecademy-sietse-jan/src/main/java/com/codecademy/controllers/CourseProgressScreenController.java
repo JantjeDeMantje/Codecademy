@@ -14,6 +14,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
@@ -28,7 +30,7 @@ public class CourseProgressScreenController {
     private Label achievedCountLAB;
 
     @FXML
-    private Text achievedCountTV;
+    private TextField achievedCountTV;
 
     @FXML
     private Button backBTN;
@@ -40,13 +42,13 @@ public class CourseProgressScreenController {
     private Label difficultyLAB;
 
     @FXML
-    private Text difficultyTV;
+    private TextField difficultyTV;
 
     @FXML
     private Label introtextLAB;
 
     @FXML
-    private TextFlow introtextTV;
+    private TextArea introtextTV;
 
     @FXML
     private TableView<Module> moduleProgressTable;
@@ -70,7 +72,7 @@ public class CourseProgressScreenController {
     private Label subjectLAB;
 
     @FXML
-    private Text subjectTV;
+    private TextField subjectTV;
 
     public void initialize() { // This method initializes the course progress screen.
         getinformation();
@@ -89,7 +91,7 @@ public class CourseProgressScreenController {
         courseNameLAB.setText(selectedCourse.getCourseName());
         difficultyTV.setText(selectedCourse.getDifficulty().toString());
         subjectTV.setText(selectedCourse.getSubject());
-        introtextTV.getChildren().add(new Text(selectedCourse.getIntroductionText()));
+        introtextTV.setText(selectedCourse.getIntroductionText());
         achievedCountTV.setText(String.valueOf(10 + (int) ((100 - 10 + 10) * Math.random())));
     }
 
