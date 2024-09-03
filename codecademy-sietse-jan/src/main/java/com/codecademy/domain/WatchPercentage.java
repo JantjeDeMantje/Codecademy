@@ -3,12 +3,12 @@ package com.codecademy.domain;
 public class WatchPercentage {
 
     private Student student;
-    private Course course;
     private double watchPercentage;
+    private Module module;
 
-    public WatchPercentage(Student student, Course course, double watchPercentage) {
+    public WatchPercentage(Student student, Module module, double watchPercentage) {
         this.student = student;
-        this.course = course;
+        this.module = module;
         this.watchPercentage = watchPercentage;
     }
 
@@ -20,12 +20,12 @@ public class WatchPercentage {
         this.student = student;
     }
 
-    public Course getCourse() {
-        return course;
+    public Module getModule() {
+        return module;
     }
 
-    public void setCourse(Course course) {
-        this.course = course;
+    public void setModule(Module module) {
+        this.module = module;
     }
 
     public double getWatchPercentage() {
