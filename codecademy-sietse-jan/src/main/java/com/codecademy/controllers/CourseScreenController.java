@@ -6,7 +6,6 @@ import java.util.ResourceBundle;
 import com.codecademy.GUI;
 import com.codecademy.dataStorage.DataHolder;
 import com.codecademy.domain.Course;
-import com.codecademy.domain.Student;
 import com.codecademy.logic.CourseManager;
 
 import javafx.event.ActionEvent;

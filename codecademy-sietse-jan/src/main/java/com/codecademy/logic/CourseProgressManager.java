@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 import com.codecademy.domain.Course;
 import com.codecademy.domain.Module;
-import com.codecademy.domain.Student;
 import com.codecademy.domain.WatchPercentage;
 
 
@@ -29,7 +28,6 @@ public class CourseProgressManager {
     private void loadWatchProgressManager() {
         watchProgressManager = new WatchProgressManager();
         this.watchPercentages = watchProgressManager.getWatchPercentages();
-
     }
 
     public ArrayList<Module> getModules() {
