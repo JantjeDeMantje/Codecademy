@@ -20,7 +20,7 @@ public class ModuleManager {
         modules.add(new Module("Java 5", "1.0", "This module is about Java 5", "Jan", "jan@mail.com", 5));
     }
 
-    public ArrayList<Module> getModules() {
+    protected ArrayList<Module> getModules() {
         return modules;
     }
 }
