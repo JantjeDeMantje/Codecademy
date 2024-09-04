@@ -46,4 +46,8 @@ public class CourseProgressManager {
     public Map<Module, Double> getAverageWatchPercentagePerModule(){
         return averageWatchPercentagePerModule;
     }
+
+    public Map<Module, Double> getWatchPercentageForStudent(Student student) {
+        return watchProgressManager.getWatchPercentageForStudent(student);
+    }
 }
