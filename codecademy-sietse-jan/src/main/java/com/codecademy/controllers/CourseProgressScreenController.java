@@ -141,6 +141,8 @@ public class CourseProgressScreenController {
 
         modulesColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getTitle()));
         progressColumn2.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(watchPercentageForStudent.get(cellData.getValue())) + "%"));
+
+        progressColumn2.setText("Voortgang student");
     }
 
     
