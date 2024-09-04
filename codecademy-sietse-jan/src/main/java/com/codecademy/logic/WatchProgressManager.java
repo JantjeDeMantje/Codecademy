@@ -92,6 +92,20 @@ public class WatchProgressManager {
         return averageWatchPercentages;
     }
 
+    public Map<Module, Double> getWatchPercentageForStudent(Student student) { // Gets the watch percentage for a specific student.
+        Map<Module, Double> watchPercentagesForStudent = new HashMap<>();
+
+        for (WatchPercentage wp : watchPercentages) { // Reads all watch percentages and adds them to the map if the student is the same.
+            if (wp.getStudent().equals(student)) {
+                Module module = wp.getModule();
+                double percentage = wp.getWatchPercentage();
+                watchPercentagesForStudent.put(module, percentage);
+            }
+        }
+
+        return watchPercentagesForStudent;
+    }
+
     public ArrayList<Module> getModules() {
         return modules;
     }  
