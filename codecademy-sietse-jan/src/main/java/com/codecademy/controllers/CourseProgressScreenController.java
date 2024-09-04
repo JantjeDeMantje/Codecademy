@@ -56,13 +56,13 @@ public class CourseProgressScreenController {
     private TableView<Module> moduleProgressTable;
 
     @FXML
-    private TableColumn<Module, Integer> modulesColumn;
+    private TableColumn<Module, String> modulesColumn;
 
     @FXML
-    private TableColumn<WatchPercentage, Double> progressColumn1;
+    private TableColumn<WatchPercentage, String> progressColumn1;
 
     @FXML
-    private TableColumn<Module, Integer> progressColumn2;
+    private TableColumn<Module, String> progressColumn2;
 
     @FXML
     private TableColumn<WatchPercentage, String> studentsColumn;
@@ -98,7 +98,7 @@ public class CourseProgressScreenController {
     }
 
     private void fillStudentsTable() { // This method fills the table with the data from the courseProgressManager.
-        Map<Student, Double> averageWatchPercentages = courseProgressManager.getAverageWatchPercentages(); // Gets the average watch percentages from the courseProgressManager.
+        Map<Student, Double> averageWatchPercentages = courseProgressManager.getAverageWatchPercentagePerStudent(); // Gets the average watch percentages from the courseProgressManager.
 
         averageWatchPercentages.forEach((student, averagePercentage) -> {
             WatchPercentage wp = new WatchPercentage(student, null, averagePercentage); // Makes a new watchPercentage object, so it can be added to the table.
@@ -106,17 +106,19 @@ public class CourseProgressScreenController {
         });
 
         studentsColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getStudent().getName()));
-        progressColumn1.setCellValueFactory(cellData -> new SimpleDoubleProperty(cellData.getValue().getWatchPercentage()).asObject());
+        progressColumn1.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getWatchPercentage() + "%"));
     }
 
     private void fillModulesTable() { // This method fills the table with the data from the courseProgressManager.
-        courseProgressManager.getModules().forEach(module -> { // Adds all the data from the arraylist to the table.
+        Map<Module, Double> averageWatchPercentages = courseProgressManager.getAverageWatchPercentagePerModule(); // Gets the average watch percentages from the courseProgressManager.
+
+        averageWatchPercentages.forEach((module, averagePercentage) -> { // Adds the module to the table.
             moduleProgressTable.getItems().add(module);
         });
 
-        modulesColumn.setCellValueFactory(new PropertyValueFactory<>("title"));
-    }
-    
+        modulesColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getTitle()));
+        progressColumn2.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(averageWatchPercentages.get(cellData.getValue())) + "%"));
+    }  
 
     @FXML
     void handleBackButton(ActionEvent event) {// This method handles the back button.
