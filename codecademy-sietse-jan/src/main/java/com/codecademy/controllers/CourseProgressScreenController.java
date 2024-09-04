@@ -130,6 +130,17 @@ public class CourseProgressScreenController {
 
     private void handleRowSelect(WatchPercentage selectedWatchPercentage) { // This method handels the selected row.
         System.out.println("Selected student: " + selectedWatchPercentage.getStudent().getName()); // Logs the selected studentName
+        moduleProgressTable.getItems().clear();
+
+        Map<Module, Double> watchPercentageForStudent = courseProgressManager.getWatchPercentageForStudent(selectedWatchPercentage.getStudent()); // Gets the watch percentage for the selected student.
+
+        watchPercentageForStudent.forEach((module, averagePercentage) -> { // Adds the module to the table.
+            moduleProgressTable.getItems().add(module);
+        });
+
+        modulesColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getTitle()));
+        progressColumn2.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(watchPercentageForStudent.get(cellData.getValue())) + "%"));
+
     }
 
     @FXML
