@@ -80,6 +80,8 @@ public class CourseProgressScreenController {
         setLabels();
         fillStudentsTable();
         fillModulesTable();
+
+        tableSelectionListener();
     }
 
     private void getinformation() { // This method gets all information from the dataholder. (last screen)
@@ -117,6 +119,18 @@ public class CourseProgressScreenController {
         modulesColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getTitle()));
         progressColumn2.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(averageWatchPercentages.get(cellData.getValue())) + "%"));
     }  
+
+    private void tableSelectionListener() { // This method looks if a row is selected.
+        studentsProgressTable.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue != null) {
+                handleRowSelect(newValue);
+            }
+        });
+    }
+
+    private void handleRowSelect(WatchPercentage selectedWatchPercentage) { // This method handels the selected row.
+        System.out.println("Selected student: " + selectedWatchPercentage.getStudent().getName()); // Logs the selected studentName
+    }
 
     @FXML
     void handleBackButton(ActionEvent event) {// This method handles the back button.
