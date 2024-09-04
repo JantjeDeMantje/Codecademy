@@ -66,8 +66,8 @@
                   </TableView>
                   <TableView fx:id="moduleProgressTable" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2">
                     <columns>
-                      <TableColumn fx:id="modulesColumn" prefWidth="280.0" text="Modules" />
-                      <TableColumn fx:id="progressColumn2" prefWidth="120.0" text="Gem. Voortgang" />
+                      <TableColumn fx:id="modulesColumn" prefWidth="260.0" text="Modules" />
+                      <TableColumn fx:id="progressColumn2" prefWidth="140.0" text="Gem. Voortgang" />
                     </columns>
                   </TableView>
                   <Line endX="300.0" startX="-100.0" stroke="#0000007f" GridPane.columnIndex="1" GridPane.valignment="TOP" />
