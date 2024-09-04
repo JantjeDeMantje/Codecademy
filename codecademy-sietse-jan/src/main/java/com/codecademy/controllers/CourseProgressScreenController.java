@@ -120,6 +120,7 @@ public class CourseProgressScreenController {
         progressColumn2.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(averageWatchPercentages.get(cellData.getValue())) + "%"));
     }  
 
+
     private void tableSelectionListener() { // This method looks if a row is selected.
         studentsProgressTable.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue != null) {
@@ -140,9 +141,9 @@ public class CourseProgressScreenController {
 
         modulesColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getTitle()));
         progressColumn2.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(watchPercentageForStudent.get(cellData.getValue())) + "%"));
-
     }
 
+    
     @FXML
     void handleBackButton(ActionEvent event) {// This method handles the back button.
         System.out.println("Back button clicked --> courseScreen"); // Logs the activation of the back button.
