@@ -69,6 +69,29 @@ public class WatchProgressManager {
         return averageWatchPercentages;
     }
 
+    public Map<Module, Double> getAverageWatchPercentagePerModule() { // Calculates the average watch percentage per module.
+        Map<Module, Double> averageWatchPercentages = new HashMap<>();
+        Map<Module, Double> totalWatchPercentages = new HashMap<>();
+        Map<Module, Integer> countWatchPercentages = new HashMap<>();
+    
+        for (WatchPercentage wp : watchPercentages) { // Reads all watch percentages and adds them to the total and count per Module.
+            Module module = wp.getModule();
+            double percentage = wp.getWatchPercentage();
+    
+            totalWatchPercentages.put(module, totalWatchPercentages.getOrDefault(module, 0.0) + percentage);
+            countWatchPercentages.put(module, countWatchPercentages.getOrDefault(module, 0) + 1);
+        }
+    
+        for (Module module : totalWatchPercentages.keySet()) { // Calculates the average watch percentage per module.
+            double total = totalWatchPercentages.get(module);
+            int count = countWatchPercentages.get(module);
+            double average = Math.round((total / count) * 10.0) / 10.0;
+            averageWatchPercentages.put(module, average);
+        }
+    
+        return averageWatchPercentages;
+    }
+
     public ArrayList<Module> getModules() {
         return modules;
     }  
