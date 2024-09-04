@@ -42,11 +42,11 @@ public class WatchProgressManager {
         this.modules = moduleManager.getModules();
     }
 
-    public ArrayList<WatchPercentage> getWatchPercentages() {
+    protected ArrayList<WatchPercentage> getWatchPercentages() {
         return watchPercentages;
     }
 
-    public Map<Student, Double> getAverageWatchPercentagePerStudent() { // Calculates the average watch percentage per student.
+    protected Map<Student, Double> getAverageWatchPercentagePerStudent() { // Calculates the average watch percentage per student.
         Map<Student, Double> averageWatchPercentages = new HashMap<>();
         Map<Student, Double> totalWatchPercentages = new HashMap<>();
         Map<Student, Integer> countWatchPercentages = new HashMap<>();
@@ -69,7 +69,7 @@ public class WatchProgressManager {
         return averageWatchPercentages;
     }
 
-    public Map<Module, Double> getAverageWatchPercentagePerModule() { // Calculates the average watch percentage per module.
+    protected Map<Module, Double> getAverageWatchPercentagePerModule() { // Calculates the average watch percentage per module.
         Map<Module, Double> averageWatchPercentages = new HashMap<>();
         Map<Module, Double> totalWatchPercentages = new HashMap<>();
         Map<Module, Integer> countWatchPercentages = new HashMap<>();
@@ -92,7 +92,7 @@ public class WatchProgressManager {
         return averageWatchPercentages;
     }
 
-    public Map<Module, Double> getWatchPercentageForStudent(Student student) { // Gets the watch percentage for a specific student.
+    protected Map<Module, Double> getWatchPercentageForStudent(Student student) { // Gets the watch percentage for a specific student.
         Map<Module, Double> watchPercentagesForStudent = new HashMap<>();
 
         for (WatchPercentage wp : watchPercentages) { // Reads all watch percentages and adds them to the map if the student is the same.
@@ -106,7 +106,7 @@ public class WatchProgressManager {
         return watchPercentagesForStudent;
     }
 
-    public ArrayList<Module> getModules() {
+    protected ArrayList<Module> getModules() {
         return modules;
     }  
 }
