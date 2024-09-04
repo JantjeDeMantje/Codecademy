@@ -15,7 +15,8 @@ public class CourseProgressManager {
 
     private ArrayList<Module> modules;
     private ArrayList<WatchPercentage> watchPercentages;
-    private Map<Student, Double> averageWatchPercentages;
+    private Map<Student, Double> averageWatchPercentagePerStudent;
+    private Map<Module, Double> averageWatchPercentagePerModule;
 
     public CourseProgressManager(Course course) {
         loadWatchProgressManager();
@@ -24,7 +25,8 @@ public class CourseProgressManager {
     private void loadWatchProgressManager() { // Loads all watchProgresses
         watchProgressManager = new WatchProgressManager();
         this.watchPercentages = watchProgressManager.getWatchPercentages();
-        this.averageWatchPercentages = watchProgressManager.getAverageWatchPercentagePerStudent();
+        this.averageWatchPercentagePerStudent = watchProgressManager.getAverageWatchPercentagePerStudent();
+        this.averageWatchPercentagePerModule = watchProgressManager.getAverageWatchPercentagePerModule();
 
         this.modules = watchProgressManager.getModules(); // Loads all the modules from the ModuleManager.
     }
@@ -37,7 +39,11 @@ public class CourseProgressManager {
         return watchPercentages;
     }
 
-    public Map<Student, Double> getAverageWatchPercentages() {
-        return averageWatchPercentages;
+    public Map<Student, Double> getAverageWatchPercentagePerStudent() {
+        return averageWatchPercentagePerStudent;
     }    
+
+    public Map<Module, Double> getAverageWatchPercentagePerModule(){
+        return averageWatchPercentagePerModule;
+    }
 }
