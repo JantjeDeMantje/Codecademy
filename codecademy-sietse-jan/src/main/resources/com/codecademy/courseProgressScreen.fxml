@@ -60,14 +60,14 @@
                <children>
                   <TableView fx:id="studentsProgressTable" prefHeight="200.0">
                     <columns>
-                      <TableColumn fx:id="studentsColumn" prefWidth="300.0" text="Cursisten" />
-                      <TableColumn fx:id="progressColumn1" prefWidth="100.0" text="Voortgang" />
+                      <TableColumn fx:id="studentsColumn" prefWidth="280.0" text="Cursisten" />
+                      <TableColumn fx:id="progressColumn1" prefWidth="120.0" text="Gem. Voortgang" />
                     </columns>
                   </TableView>
                   <TableView fx:id="moduleProgressTable" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2">
                     <columns>
-                      <TableColumn fx:id="modulesColumn" prefWidth="300.0" text="Modules" />
-                      <TableColumn fx:id="progressColumn2" prefWidth="100.0" text="Voortgang" />
+                      <TableColumn fx:id="modulesColumn" prefWidth="280.0" text="Modules" />
+                      <TableColumn fx:id="progressColumn2" prefWidth="120.0" text="Gem. Voortgang" />
                     </columns>
                   </TableView>
                   <Line endX="300.0" startX="-100.0" stroke="#0000007f" GridPane.columnIndex="1" GridPane.valignment="TOP" />
@@ -128,7 +128,7 @@
                                     <Insets left="25.0" />
                                  </GridPane.margin>
                               </Label>
-                              <TextField fx:id="achievedCountTV" GridPane.columnIndex="1" editable="false">
+                              <TextField fx:id="achievedCountTV" editable="false" GridPane.columnIndex="1">
                                  <GridPane.margin>
                                     <Insets right="25.0" />
                                  </GridPane.margin>
@@ -136,7 +136,7 @@
                                     <Font size="15.0" />
                                  </font>
                               </TextField>
-                              <TextField fx:id="subjectTV" GridPane.columnIndex="1" GridPane.rowIndex="1" editable="false">
+                              <TextField fx:id="subjectTV" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                  <GridPane.margin>
                                     <Insets right="25.0" />
                                  </GridPane.margin>
@@ -144,7 +144,7 @@
                                     <Font size="15.0" />
                                  </font>
                               </TextField>
-                              <TextField fx:id="difficultyTV" GridPane.columnIndex="1" GridPane.rowIndex="2" editable="false">
+                              <TextField fx:id="difficultyTV" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="2">
                                  <GridPane.margin>
                                     <Insets right="25.0" />
                                  </GridPane.margin>
@@ -171,7 +171,7 @@
                                     <Insets left="25.0" />
                                  </GridPane.margin>
                               </Label>
-                              <TextArea fx:id="introtextTV" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1" wrapText="true" editable="false">
+                              <TextArea fx:id="introtextTV" editable="false" prefHeight="200.0" prefWidth="200.0" wrapText="true" GridPane.rowIndex="1">
                                  <GridPane.margin>
                                     <Insets bottom="100.0" left="25.0" right="25.0" />
                                  </GridPane.margin>
