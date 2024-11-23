@@ -161,5 +161,6 @@ public class CourseProgressScreenController {
 
         moduleProgressTable.getItems().clear(); // Clears the table.
         fillModulesTable(); // Fills the table again.
+        progressColumn2.setText("Gem. Voortgang");
     }
 }
