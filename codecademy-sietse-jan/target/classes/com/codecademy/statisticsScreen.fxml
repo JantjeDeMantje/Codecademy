@@ -53,7 +53,7 @@
                      <children>
                         <!-- Tweede plaats -->
                         <VBox alignment="BOTTOM_CENTER">
-                           <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Webcast_2">
+                           <Text fx:id="webcast2TEXT" strokeType="OUTSIDE" strokeWidth="0.0" text="Webcast_2">
                               <font>
                                  <Font name="Arial" size="32.0" />
                               </font>
@@ -62,11 +62,19 @@
                               </VBox.margin>
                            </Text>
                            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="SILVER" height="225.0" stroke="BLACK" strokeType="INSIDE" width="200.0" />
+                           <Text fx:id="viewcount2TEXT" strokeType="OUTSIDE" strokeWidth="0.0" text="ViewCount_2">
+                              <font>
+                                 <Font name="Arial" size="20.0" />
+                              </font>
+                              <VBox.margin>
+                                 <Insets top="5.0" />
+                              </VBox.margin>
+                           </Text>
                         </VBox>
                         <!-- Eerste plaats -->
                         <VBox alignment="CENTER">
                            <children>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Webcast_1">
+                              <Text fx:id="webcast1TEXT" strokeType="OUTSIDE" strokeWidth="0.0" text="Webcast_1">
                                  <font>
                                     <Font name="Arial" size="32.0" />
                                  </font>
@@ -75,12 +83,20 @@
                                  </VBox.margin>
                               </Text>
                               <Rectangle arcHeight="5.0" arcWidth="5.0" fill="GOLD" height="275.0" stroke="BLACK" strokeType="INSIDE" width="200.0" />
+                              <Text fx:id="viewcount1TEXT" strokeType="OUTSIDE" strokeWidth="0.0" text="ViewCount_1">
+                                 <font>
+                                    <Font name="Arial" size="20.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="5.0" />
+                                 </VBox.margin>
+                              </Text>
                            </children>
                         </VBox>
                         <!-- Derde plaats -->
                         <VBox alignment="BOTTOM_CENTER">
                            <children>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Webcast_3">
+                              <Text fx:id="webcast3TEXT" strokeType="OUTSIDE" strokeWidth="0.0" text="Webcast_3">
                                  <font>
                                     <Font name="Arial" size="32.0" />
                                  </font>
@@ -89,6 +105,14 @@
                                  </VBox.margin>
                               </Text>
                               <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#cd7f32" height="175.0" stroke="BLACK" strokeType="INSIDE" width="200.0" />
+                              <Text fx:id="viewcount3TEXT" strokeType="OUTSIDE" strokeWidth="0.0" text="ViewCount_3">
+                                 <font>
+                                    <Font name="Arial" size="20.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="5.0" />
+                                 </VBox.margin>
+                              </Text>
                            </children>
                         </VBox>
                      </children>
