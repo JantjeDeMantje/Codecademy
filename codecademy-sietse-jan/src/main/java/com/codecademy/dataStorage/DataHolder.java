@@ -3,7 +3,7 @@ package com.codecademy.dataStorage;
 import com.codecademy.domain.Student;
 import com.codecademy.domain.Course;
 
-public class DataHolder {
+public class DataHolder { // This class holds the selected student and course, so the navigation can be done between the different pages.
     private Student selectedStudent;
 
     private Course selectedCourse;
