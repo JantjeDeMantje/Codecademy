@@ -1,15 +1,26 @@
 package com.codecademy.controllers;
 
+import java.net.URL;
+import java.util.ResourceBundle;
+
 import com.codecademy.GUI;
+import com.codecademy.logic.CourseManager;
+import com.codecademy.logic.StatisticsManager;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.text.Text;
+import javafx.fxml.Initializable;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 
-public class StatisticsScreenController {
+public class StatisticsScreenController implements Initializable{
    
+    private StatisticsManager statisticsManager;
+
     @FXML
     private Button backBTN;
 
@@ -34,8 +45,13 @@ public class StatisticsScreenController {
     @FXML
     private Text webcast3TEXT;
 
+    @Override
+    public void initialize(URL arg0, ResourceBundle arg1) { // This method initializes the statistics screen.
+        statisticsManager = new StatisticsManager(); // Creates a new statisticsManager object.
+    }
+
     @FXML
-    void handleBackButton(ActionEvent event) {
+    void handleBackButton(ActionEvent event) { // This method handles the back button.
         System.out.println("Back button clicked"); // Logs the activation of the back button.
         GUI.instance.setRoot("homeScreen.fxml"); // Loads the new fxml in.
     }
