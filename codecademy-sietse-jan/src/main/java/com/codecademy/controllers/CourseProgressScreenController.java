@@ -36,6 +36,9 @@ public class CourseProgressScreenController {
     private Button backBTN;
 
     @FXML
+    private Button refreshBTN;
+
+    @FXML
     private Label courseNameLAB;
 
     @FXML
@@ -152,4 +155,7 @@ public class CourseProgressScreenController {
         GUI.instance.setRoot("courseScreen.fxml"); // Loads the new fxml in.
     }
 
+    @FXML
+    void handleRefreshButton(ActionEvent event) { // This method handles the refresh button.
+    }
 }
