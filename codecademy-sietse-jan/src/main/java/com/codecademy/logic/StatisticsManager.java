@@ -18,4 +18,8 @@ public class StatisticsManager {
         top3Webcasts.add(new Webcast("Java Basics", "Introductie tot Java programmeren", "Jan", "Codecademy", 1234, "youtube.com/javabasics", 58342));
         top3Webcasts.add(new Webcast("Advanced Python", "Geavanceerde technieken in Python", "Piet", "Apple", 5678, "youtube.com/advancedpython", 38742));
     }
+
+    public ArrayList<Webcast> getTop3Webcasts() {
+        return top3Webcasts;
+    }
 }
