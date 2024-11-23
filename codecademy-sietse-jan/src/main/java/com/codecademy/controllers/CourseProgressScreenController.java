@@ -157,5 +157,9 @@ public class CourseProgressScreenController {
 
     @FXML
     void handleRefreshButton(ActionEvent event) { // This method handles the refresh button.
+        System.out.println("Refresh button clicked"); // Logs the activation of the refresh button.
+
+        moduleProgressTable.getItems().clear(); // Clears the table.
+        fillModulesTable(); // Fills the table again.
     }
 }
