@@ -1,11 +1,12 @@
 package com.codecademy.controllers;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import com.codecademy.GUI;
-import com.codecademy.logic.CourseManager;
 import com.codecademy.logic.StatisticsManager;
+import com.codecademy.domain.Webcast;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -52,6 +53,17 @@ public class StatisticsScreenController implements Initializable{
     }
 
     private void fillStage() { // This method fills the stage with the data from the statisticsManager.
+        ArrayList<Webcast> topWebcasts = statisticsManager.getTop3Webcasts();
+        if(topWebcasts.size() == 3) {
+            webcast1TEXT.setText(topWebcasts.get(0).getTitle());
+            viewcount1TEXT.setText(String.valueOf(topWebcasts.get(0).getViews()));
+            webcast2TEXT.setText(topWebcasts.get(1).getTitle());
+            viewcount2TEXT.setText(String.valueOf(topWebcasts.get(1).getViews()));
+            webcast3TEXT.setText(topWebcasts.get(2).getTitle());
+            viewcount3TEXT.setText(String.valueOf(topWebcasts.get(2).getViews()));
+        } else { // If there arent 3 webcasts to display, it will print this message.
+            System.out.println("Not enough webcasts to display");
+        }
     }
 
     @FXML
