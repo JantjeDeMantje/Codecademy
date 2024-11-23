@@ -3,7 +3,6 @@ package com.codecademy.logic;
 import java.util.ArrayList;
 import java.util.Map;
 
-import com.codecademy.dataStorage.DataHolder;
 import com.codecademy.domain.Course;
 import com.codecademy.domain.Registration;
 import com.codecademy.domain.Student;

@@ -4,6 +4,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import com.codecademy.GUI;
+import com.codecademy.dataStorage.DataHolder;
 import com.codecademy.domain.Course;
 import com.codecademy.logic.CourseManager;
 
@@ -60,7 +61,7 @@ public class CourseScreenController implements Initializable {
 
     @FXML
     private void handleBackButton(ActionEvent event) { // This method handles the back button.
-        System.out.println("Back button clicked"); // Logs the activation of the back button.
+        System.out.println("Back button clicked --> homeScreen"); // Logs the activation of the back button.
         GUI.instance.setRoot("homeScreen.fxml"); // Loads the new fxml in.
     }
 
@@ -73,8 +74,14 @@ public class CourseScreenController implements Initializable {
     }
 
     private void handleRowSelect(Course selectedCourse) { // This method handels the selected row.
-        System.out.println("Selected course: " + selectedCourse.getCourseName()); // Logs the selected courseName
+         selectedCourse = courseTable.getSelectionModel().getSelectedItem();
+         if (selectedCourse == null) {
+             System.out.println("No course selected.");
+             return;
+         }
 
+        System.out.println("Selected course: " + selectedCourse.getCourseName());
+        DataHolder.getInstance().setSelectedCourse(selectedCourse);
         GUI.instance.setRoot("CourseProgressScreen.fxml"); // Loads the new fxml in.
     }
 }

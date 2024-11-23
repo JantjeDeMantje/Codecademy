@@ -1,7 +1,6 @@
 package com.codecademy;
 
 import javafx.application.Application;
-import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -20,7 +19,7 @@ public class GUI extends Application { // This class shows all the GUI elements
 
     // This method is the startpoint of the JavaFX application.
     @Override
-    public void start(Stage primaryStage) throws Exception {
+    public void start(@SuppressWarnings("exports") Stage primaryStage) throws Exception {
         instance = this;
         this.primaryStage = primaryStage; // Set the primary stage.
 
@@ -29,6 +28,7 @@ public class GUI extends Application { // This class shows all the GUI elements
 
     // This methode selects and loads the selected FXML file. Nothing selected =
     // homescreen.
+    @SuppressWarnings("exports")
     public Parent loadFXML(String fxmlPath) throws Exception {
         if (fxmlPath == null || fxmlPath.isEmpty()) {
             fxmlPath = "/com/codecademy/homeScreen.fxml"; // This is the homescreen.

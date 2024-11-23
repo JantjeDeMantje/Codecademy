@@ -50,18 +50,21 @@
             <Font size="24.0" />
          </font>
       </Text>
-      <TextArea fx:id="introTextTEXT" layoutX="651.0" layoutY="259.0" prefHeight="200.0" prefWidth="500.0" AnchorPane.rightAnchor="50.0" />
-      <TextField fx:id="nameTEXT" layoutX="977.0" layoutY="88.0" prefHeight="39.0" prefWidth="221.0" AnchorPane.rightAnchor="50.0">
+      <TextArea fx:id="introTextTEXT" layoutX="651.0" layoutY="259.0" prefHeight="200.0" prefWidth="500.0" AnchorPane.rightAnchor="50.0" wrapText="true" editable="false">
+         <font>
+            <Font size="15.0" />
+         </font></TextArea>
+      <TextField fx:id="nameTEXT" layoutX="977.0" layoutY="88.0" prefHeight="39.0" prefWidth="221.0" AnchorPane.rightAnchor="50.0" editable="false">
          <font>
             <Font size="18.0" />
          </font>
       </TextField>
-      <TextField fx:id="subjectTEXT" layoutX="977.0" layoutY="137.0" prefHeight="39.0" prefWidth="221.0" AnchorPane.rightAnchor="50.0">
+      <TextField fx:id="subjectTEXT" layoutX="977.0" layoutY="137.0" prefHeight="39.0" prefWidth="221.0" AnchorPane.rightAnchor="50.0" editable="false">
          <font>
             <Font size="18.0" />
          </font>
       </TextField>
-      <TextField fx:id="difficultyTEXT" layoutX="976.0" layoutY="186.0" prefHeight="39.0" prefWidth="221.0" AnchorPane.rightAnchor="50.0">
+      <TextField fx:id="difficultyTEXT" layoutX="976.0" layoutY="186.0" prefHeight="39.0" prefWidth="221.0" AnchorPane.rightAnchor="50.0" editable="false">
          <font>
             <Font size="18.0" />
          </font>
