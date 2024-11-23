@@ -48,6 +48,10 @@ public class StatisticsScreenController implements Initializable{
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) { // This method initializes the statistics screen.
         statisticsManager = new StatisticsManager(); // Creates a new statisticsManager object.
+        fillStage();
+    }
+
+    private void fillStage() { // This method fills the stage with the data from the statisticsManager.
     }
 
     @FXML
