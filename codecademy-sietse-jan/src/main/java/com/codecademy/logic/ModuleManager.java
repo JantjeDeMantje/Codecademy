@@ -11,7 +11,7 @@ public class ModuleManager {
         createDummyData();
     }
 
-    private void createDummyData() {
+    private void createDummyData() { // This method creates the temp. dummy data
         modules = new ArrayList<>();
         modules.add(new Module("Java 1", "1.0", "This module is about Java 1", "Jan", "jan@mail.com", 1));
         modules.add(new Module("Java 2", "1.0", "This module is about Java 2", "Jan", "jan@mail.com", 2));
