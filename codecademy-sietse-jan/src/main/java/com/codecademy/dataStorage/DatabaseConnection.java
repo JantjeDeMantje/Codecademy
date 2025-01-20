@@ -16,3 +16,14 @@ public class DatabaseConnection {
         }
     }
 }
+
+class DatabaseConnectionTest {
+    public static void main(String[] args) {
+        Connection connection = DatabaseConnection.getConnection();
+        if (connection != null) {
+            System.out.println("Connection successfull!");
+        } else {
+            System.out.println("Connection failed!");
+        }
+    }
+}
