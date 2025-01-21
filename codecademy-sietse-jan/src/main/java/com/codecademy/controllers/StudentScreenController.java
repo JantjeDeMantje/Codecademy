@@ -69,6 +69,9 @@ public class StudentScreenController {
     @FXML
     private TextField countryTEXT;
 
+    @FXML
+    private TextField addressTEXT;
+
     public void initialize() {
         studentManager = new StudentManager();
         fillTable();
@@ -107,6 +110,7 @@ public class StudentScreenController {
         birthdateTEXT.setText(selectedStudent.getBirthdate());
         genderTEXT.setText(selectedStudent.getGender());
         zipcodeTEXT.setText(selectedStudent.getZipcode());
+        addressTEXT.setText(selectedStudent.getAddress());
         cityTEXT.setText(selectedStudent.getCity());
         countryTEXT.setText(selectedStudent.getCountry());
     }
@@ -122,7 +126,7 @@ public class StudentScreenController {
 
         Student newStudent = studentManager.createStudent(
                 nameTEXT.getText(), emailTEXT.getText(),
-                birthdateTEXT.getText(), genderTEXT.getText(),
+                birthdateTEXT.getText(), genderTEXT.getText(), addressTEXT.getText(),
                 zipcodeTEXT.getText(), cityTEXT.getText(),
                 countryTEXT.getText(), studentTable);
 
@@ -154,7 +158,7 @@ public class StudentScreenController {
     void handleUpdateButton(ActionEvent event) { // This method handles the update button.
         studentManager.updateStudent(
                 selectedStudent, nameTEXT.getText(), emailTEXT.getText(),
-                birthdateTEXT.getText(), genderTEXT.getText(),
+                birthdateTEXT.getText(), genderTEXT.getText(), addressTEXT.getText(),
                 zipcodeTEXT.getText(), cityTEXT.getText(),
                 countryTEXT.getText(), studentTable);
 

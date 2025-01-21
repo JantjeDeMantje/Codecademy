@@ -20,7 +20,7 @@ public class StudentManager {
     }
 
     // This method creates a new student object
-    public Student createStudent(String name, String email, String birthdate, String gender, String zipcode,
+    public Student createStudent(String name, String email, String birthdate, String gender, String address, String zipcode,
             String city, String country, TableView<Student> studentTable) {
 
         // Student newStudent = new Student(name, email, birthdate, gender, zipcode, city, country);
@@ -35,7 +35,7 @@ public class StudentManager {
     }
 
     // This method updates a student object
-    public void updateStudent(Student student, String name, String email, String birthdate, String gender,
+    public void updateStudent(Student student, String name, String email, String birthdate, String gender, String address,
             String zipcode, String city, String country, TableView<Student> studentTable) {
         student.setName(name);
         student.setEmail(email);
@@ -44,6 +44,7 @@ public class StudentManager {
         student.setZipcode(zipcode);
         student.setCity(city);
         student.setCountry(country);
+        student.setAddress(address);
         studentTable.refresh(); // Refreshes the table
     }
 }

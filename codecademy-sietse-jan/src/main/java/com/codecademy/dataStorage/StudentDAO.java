@@ -17,7 +17,7 @@ public class StudentDAO{
         if (connection != null) {
             try {
                 Statement statement = connection.createStatement();
-                String query = "SELECT StudentId, EmailAddress, Name, Birthday, Gender, Zipcode, City, Country\r\n" + //
+                String query = "SELECT StudentId, EmailAddress, Name, Birthday, Gender, Address, Zipcode, City, Country\r\n" + //
                                         "FROM Student\r\n" + //
                                         "JOIN Address ON Student.AddressId = Address.AddressId";
                 ResultSet resultSet = statement.executeQuery(query);
@@ -27,10 +27,11 @@ public class StudentDAO{
                     String email = resultSet.getString("EmailAddress");
                     Date birthdate = resultSet.getDate("Birthday");
                     String gender = resultSet.getString("Gender");
+                    String address = resultSet.getString("Address");
                     String zipcode = resultSet.getString("Zipcode");	
                     String city = resultSet.getString("City");	
                     String country = resultSet.getString("Country");
-                    students.add(new Student(studentId, name, email, birthdate, gender, zipcode, city, country));
+                    students.add(new Student(studentId, name, email, birthdate, gender, address, zipcode, city, country));
                 }
             } catch (SQLException e) {
                 System.out.println("Error: " + e.getMessage());
