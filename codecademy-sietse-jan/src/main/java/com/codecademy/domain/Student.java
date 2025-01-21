@@ -13,6 +13,7 @@ public class Student {
     private String zipcode;
     private String city;
     private String country;
+    private String address;
 
     public Student(int studentId, String name, String email, String birthdate, String gender, String zipcode, String city, String country) {
         this.studentId = studentId;
@@ -26,7 +27,7 @@ public class Student {
     }
 
     @SuppressWarnings("exports")
-    public Student(int studentId, String name, String email, Date birthdate, String gender, String zipcode, String city, String country) {
+    public Student(int studentId, String name, String email, Date birthdate, String gender,String address, String zipcode, String city, String country) {
         this.studentId = studentId;
         this.name = name;
         this.email = email;
@@ -35,6 +36,7 @@ public class Student {
         this.zipcode = zipcode;
         this.city = city;
         this.country = country;
+        this.address = address;
     }
 
     public int getStudentId() {
@@ -77,6 +79,14 @@ public class Student {
         this.gender = gender;
     }
 
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address){
+        this.address = address;
+    }
+
     public String getZipcode() {
         return zipcode;
     }
@@ -100,6 +110,7 @@ public class Student {
     public void setCountry(String country) {
         this.country = country;
     }
+
 
     private String formatDate(Date birthdate) {
         SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
