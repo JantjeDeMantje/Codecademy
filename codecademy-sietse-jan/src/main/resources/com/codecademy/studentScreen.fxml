@@ -9,7 +9,6 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.codecademy.controllers.StudentScreenController">
    <children>
       <TableView fx:id="studentTable" prefHeight="700.0" prefWidth="600.0">
@@ -54,17 +53,17 @@
             <Font size="24.0" />
          </font>
       </Text>
-      <Text fx:id="cityLAB" layoutX="640.0" layoutY="400.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Woonplaats:" wrappingWidth="200.0" AnchorPane.topAnchor="350.0">
+      <Text fx:id="addressLAB" layoutX="640.0" layoutY="400.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Adres:" wrappingWidth="200.0" AnchorPane.topAnchor="350.0">
          <font>
             <Font size="24.0" />
          </font>
       </Text>
-      <Text fx:id="countryLAB" layoutX="640.0" layoutY="451.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Land:" wrappingWidth="200.0" AnchorPane.topAnchor="400.0">
+      <Text fx:id="cityLAB" layoutX="640.0" layoutY="451.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Woonplaats:" wrappingWidth="200.0" AnchorPane.topAnchor="400.0">
          <font>
             <Font size="24.0" />
          </font>
       </Text>
-      <Line endX="495.0" layoutX="707.0" layoutY="476.0" startX="-105.0" />
+      <Line endX="495.0" layoutX="706.0" layoutY="488.0" startX="-105.0" />
       <TextField fx:id="nameTEXT" layoutX="960.0" layoutY="96.0" prefHeight="25.0" prefWidth="200.0">
          <font>
             <Font size="18.0" />
@@ -90,12 +89,12 @@
             <Font size="18.0" />
          </font>
       </TextField>
-      <TextField fx:id="cityTEXT" layoutX="960.0" layoutY="346.0" prefHeight="25.0" prefWidth="200.0">
+      <TextField fx:id="addressTEXT" layoutX="960.0" layoutY="346.0" prefHeight="25.0" prefWidth="200.0">
          <font>
             <Font size="18.0" />
          </font>
       </TextField>
-      <TextField fx:id="countryTEXT" layoutX="960.0" layoutY="396.0" prefHeight="25.0" prefWidth="200.0">
+      <TextField fx:id="cityTEXT" layoutX="960.0" layoutY="396.0" prefHeight="25.0" prefWidth="200.0">
          <font>
             <Font size="18.0" />
          </font>
@@ -105,5 +104,15 @@
             <Font size="24.0" />
          </font>
       </Button>
+      <Text fx:id="countryLAB1" layoutX="640.0" layoutY="471.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Land:" wrappingWidth="200.0">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
+      <TextField fx:id="countryTEXT" layoutX="960.0" layoutY="441.0" prefHeight="25.0" prefWidth="200.0">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </TextField>
    </children>
 </AnchorPane>
