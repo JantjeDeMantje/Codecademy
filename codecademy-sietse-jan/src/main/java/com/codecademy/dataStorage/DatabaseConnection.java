@@ -6,6 +6,11 @@ import java.sql.SQLException;
 
 public class DatabaseConnection {
     private static final String URL = "jdbc:sqlserver://localhost;databaseName=CodeCademyDB;user=DB_Admin;password=Codecademy;";
+
+    public DatabaseConnection(){
+        getConnection();
+    }
+    
     public static Connection getConnection() {
         try {
             Connection connection = DriverManager.getConnection(URL);
