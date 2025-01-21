@@ -10,14 +10,8 @@ import java.sql.Date;
 import com.codecademy.domain.Student;
 
 public class StudentDAO{
-    private DatabaseConnection databaseConnection;
 
-    public StudentDAO(){
-        databaseConnection = new DatabaseConnection();
-    }
-
-     public ArrayList<Student> getAllStudents() {
-        System.out.println("Getting all students");
+    public ArrayList<Student> getAllStudents() {
         ArrayList<Student> students = new ArrayList<>();
         Connection connection = DatabaseConnection.getConnection();
         if (connection != null) {
@@ -37,7 +31,6 @@ public class StudentDAO{
                     String city = resultSet.getString("City");	
                     String country = resultSet.getString("Country");
                     students.add(new Student(studentId, name, email, birthdate, gender, zipcode, city, country));
-                    printResult(students);
                 }
             } catch (SQLException e) {
                 System.out.println("Error: " + e.getMessage());
@@ -52,9 +45,7 @@ public class StudentDAO{
         return students;
     }
 
-    public void printResult(ArrayList<Student> students){
-        for(Student student : students){
-            System.out.println(student.getName());
-        }
+    public void createStudent(String name, String email, String birthdate, String gender, String zipcode, String city, String country){
+
     }
 }
