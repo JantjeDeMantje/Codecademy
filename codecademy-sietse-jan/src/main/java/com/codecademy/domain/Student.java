@@ -1,7 +1,11 @@
 package com.codecademy.domain;
 
+import java.sql.Date;
+import java.text.SimpleDateFormat;
+
 public class Student {
 
+    private int studentId;
     private String name;
     private String email;
     private String birthdate;
@@ -10,8 +14,8 @@ public class Student {
     private String city;
     private String country;
 
-    public Student(String name, String email, String birthdate, String gender, String zipcode, String city,
-            String country) {
+    public Student(int studentId, String name, String email, String birthdate, String gender, String zipcode, String city, String country) {
+        this.studentId = studentId;
         this.name = name;
         this.email = email;
         this.birthdate = birthdate;
@@ -19,6 +23,26 @@ public class Student {
         this.zipcode = zipcode;
         this.city = city;
         this.country = country;
+    }
+
+    @SuppressWarnings("exports")
+    public Student(int studentId, String name, String email, Date birthdate, String gender, String zipcode, String city, String country) {
+        this.studentId = studentId;
+        this.name = name;
+        this.email = email;
+        this.birthdate = formatDate(birthdate);
+        this.gender = gender;
+        this.zipcode = zipcode;
+        this.city = city;
+        this.country = country;
+    }
+
+    public int getStudentId() {
+        return studentId;
+    }
+
+    public void setStudentId(int studentId) {
+        this.studentId = studentId;
     }
 
     public String getName() {
@@ -75,6 +99,11 @@ public class Student {
 
     public void setCountry(String country) {
         this.country = country;
+    }
+
+    private String formatDate(Date birthdate) {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+        return sdf.format(birthdate);
     }
 
 }
