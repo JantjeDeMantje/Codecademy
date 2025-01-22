@@ -135,10 +135,10 @@ public class StudentScreenController {
 
     @FXML
     void handleDeleteButton(ActionEvent event) { // This method handles the delete button.
-        studentManager.deleteStudent(selectedStudent, studentTable); // Removes the selected student from the table.
-
         // Logs the name of the deleted student
         System.out.println("DeleteStudentButton pressed: " + selectedStudent.getName());
+
+        studentManager.deleteStudent(selectedStudent, studentTable); // Removes the selected student from the table.
     }
 
     @FXML
