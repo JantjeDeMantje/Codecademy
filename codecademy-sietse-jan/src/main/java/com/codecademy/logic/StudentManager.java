@@ -37,6 +37,8 @@ public class StudentManager {
     // This method deletes a student object
     public void deleteStudent(Student student, TableView<Student> studentTable) {
         studentTable.getItems().remove(student); // Removes the student from the table
+
+        studentDAO.deleteStudent(student); // Deletes the student from the database
     }
 
     // This method updates a student object

@@ -81,5 +81,22 @@ public class StudentDAO{
         }
     }
 
+    public void deleteStudent (Student student) {
+        String deleteStudentSQL = "DELETE FROM Student WHERE StudentId = ?";
+        String deleteAddressSQL = "DELETE FROM Address WHERE AddressId = ?";
+        
+        try (Connection conn = DatabaseConnection.getConnection()) {
+            try (PreparedStatement pstmtStudent = conn.prepareStatement(deleteStudentSQL)) {
+                pstmtStudent.setInt(1, student.getStudentId());
+                pstmtStudent.executeUpdate();
+                
+                try (PreparedStatement pstmtAddress = conn.prepareStatement(deleteAddressSQL)) {
+                    pstmtAddress.setInt(1, student.getStudentId());
+                    pstmtAddress.executeUpdate();
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }
