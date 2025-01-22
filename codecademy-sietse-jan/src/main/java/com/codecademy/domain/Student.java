@@ -14,6 +14,7 @@ public class Student {
     private String city;
     private String country;
     private String address;
+    private int addressId;
 
     public Student(String name, String email, String birthdate, String gender, String address, String zipcode, String city, String country) {
         this.name = name;
@@ -26,8 +27,8 @@ public class Student {
         this.country = country;
     }
 
-    @SuppressWarnings("exports")
-    public Student(int studentId, String name, String email, Date birthdate, String gender,String address, String zipcode, String city, String country) {
+    @SuppressWarnings("exports") // Constructor for the loading of the students from the database
+    public Student(int studentId, String name, String email, Date birthdate, String gender,String address, String zipcode, String city, String country, int addressId) {
         this.studentId = studentId;
         this.name = name;
         this.email = email;
@@ -37,6 +38,7 @@ public class Student {
         this.city = city;
         this.country = country;
         this.address = address;
+        this.addressId = addressId;
     }
 
     public int getStudentId() {
@@ -109,6 +111,14 @@ public class Student {
 
     public void setCountry(String country) {
         this.country = country;
+    }
+
+    public int getAddressId() {
+        return addressId;
+    }
+
+    public void setAddressId(int addressId) {
+        this.addressId = addressId;
     }
 
 

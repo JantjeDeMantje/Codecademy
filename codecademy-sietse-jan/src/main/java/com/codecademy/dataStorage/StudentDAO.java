@@ -18,7 +18,7 @@ public class StudentDAO{
         if (connection != null) {
             try {
                 Statement statement = connection.createStatement();
-                String query = "SELECT StudentId, EmailAddress, Name, Birthday, Gender, Address, Zipcode, City, Country\r\n" + //
+                String query = "SELECT StudentId, EmailAddress, Name, Birthday, Gender, Address, Zipcode, City, Country, Student.AddressId\r\n" + //
                                         "FROM Student\r\n" + //
                                         "JOIN Address ON Student.AddressId = Address.AddressId";
                 ResultSet resultSet = statement.executeQuery(query);
@@ -32,7 +32,8 @@ public class StudentDAO{
                     String zipcode = resultSet.getString("Zipcode");	
                     String city = resultSet.getString("City");	
                     String country = resultSet.getString("Country");
-                    students.add(new Student(studentId, name, email, birthdate, gender, address, zipcode, city, country));
+                    int addressId = resultSet.getInt("AddressId");
+                    students.add(new Student(studentId, name, email, birthdate, gender, address, zipcode, city, country, addressId));
                 }
             } catch (SQLException e) {
                 System.out.println("Error: " + e.getMessage());
@@ -91,7 +92,7 @@ public class StudentDAO{
                 pstmtStudent.executeUpdate();
                 
                 try (PreparedStatement pstmtAddress = conn.prepareStatement(deleteAddressSQL)) {
-                    pstmtAddress.setInt(1, student.getStudentId());
+                    pstmtAddress.setInt(1, student.getAddressId());
                     pstmtAddress.executeUpdate();
                 }
             }
