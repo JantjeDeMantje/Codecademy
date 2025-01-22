@@ -1,6 +1,8 @@
 package com.codecademy.controllers;
 
 import java.util.Date;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import com.codecademy.GUI;
 import com.codecademy.dataStorage.DataHolder;
@@ -129,6 +131,15 @@ public class StudentScreenController {
 
     @FXML
     void handleCreateButton(ActionEvent event) { // This method handles the create button.
+        if (!isValidEmail(emailTEXT.getText())) {
+            System.out.println("Invalid email format");
+            return;
+        }
+
+        if (!isValidZipcode(zipcodeTEXT.getText())) {
+            System.out.println("Invalid zipcode format");
+            return;
+        }
 
         Student newStudent = studentManager.createStudent(
                 nameTEXT.getText(), emailTEXT.getText(),
@@ -162,6 +173,16 @@ public class StudentScreenController {
 
     @FXML
     void handleUpdateButton(ActionEvent event) { // This method handles the update button.
+        if (!isValidEmail(emailTEXT.getText())) {
+            System.out.println("Invalid email format");
+            return;
+        }
+
+        if (!isValidZipcode(zipcodeTEXT.getText())) {
+            System.out.println("Invalid zipcode format");
+            return;
+        }
+
         studentManager.updateStudent(
                 selectedStudent, nameTEXT.getText(), emailTEXT.getText(),
                 createDate(birthdateDayTEXT.getText(), birthdateMonthTEXT.getText(), birthdateYearTEXT.getText()), genderTEXT.getText(), addressTEXT.getText(),
@@ -171,6 +192,21 @@ public class StudentScreenController {
         // Logs the name of the updated student
         System.out.println("UpdateStudentButton pressed: " + selectedStudent.getName());
     }
+
+    private boolean isValidEmail(String email) {
+        String emailRegex = "^[a-zA-Z]+(\\.[a-zA-Z]+)*@[a-zA-Z]+\\.[a-zA-Z]+$";
+        Pattern pattern = Pattern.compile(emailRegex);
+        Matcher matcher = pattern.matcher(email);
+        return matcher.matches();
+    }
+
+    private boolean isValidZipcode(String zipcode) {
+        String zipcodeRegex = "^[1-9][0-9]{3} [A-Z]{2}$";
+        Pattern pattern = Pattern.compile(zipcodeRegex);
+        Matcher matcher = pattern.matcher(zipcode);
+        return matcher.matches();
+    }
+
 
     private void setBirthdateText(){ // This method sets the birthdate text.
         String[] date = selectedStudent.getBirthdate().split("-");
@@ -184,4 +220,5 @@ public class StudentScreenController {
         System.out.println(date);
         return date;
     }
+
 }
