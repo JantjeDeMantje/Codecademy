@@ -84,6 +84,7 @@ public class StudentScreenController {
         studentManager = new StudentManager();
         fillTable();
         tableSelectionListener();
+
     }
 
     @FXML
@@ -175,6 +176,7 @@ public class StudentScreenController {
     void handleUpdateButton(ActionEvent event) { // This method handles the update button.
         if (!isValidEmail(emailTEXT.getText())) {
             System.out.println("Invalid email format");
+            showAlert("Ongeldig Email", "Deze email is niet geldig. Voer een geldig emailadres in.");
             return;
         }
 
@@ -193,14 +195,14 @@ public class StudentScreenController {
         System.out.println("UpdateStudentButton pressed: " + selectedStudent.getName());
     }
 
-    private boolean isValidEmail(String email) {
+    private boolean isValidEmail(String email) { // This method checks if the email is valid.
         String emailRegex = "^[a-zA-Z]+(\\.[a-zA-Z]+)*@[a-zA-Z]+\\.[a-zA-Z]+$";
         Pattern pattern = Pattern.compile(emailRegex);
         Matcher matcher = pattern.matcher(email);
         return matcher.matches();
     }
 
-    private boolean isValidZipcode(String zipcode) {
+    private boolean isValidZipcode(String zipcode) { // This method checks if the zipcode is valid.
         String zipcodeRegex = "^[1-9][0-9]{3} [A-Z]{2}$";
         Pattern pattern = Pattern.compile(zipcodeRegex);
         Matcher matcher = pattern.matcher(zipcode);
@@ -221,4 +223,11 @@ public class StudentScreenController {
         return date;
     }
 
+    private void showAlert(String title, String message) {
+        javafx.scene.control.Alert alert = new javafx.scene.control.Alert(javafx.scene.control.Alert.AlertType.INFORMATION);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
 }
