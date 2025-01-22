@@ -47,6 +47,9 @@ public class StudentManager {
     // This method updates a student object
     public void updateStudent(Student student, String name, String email, String birthdate, String gender, String address,
             String zipcode, String city, String country, TableView<Student> studentTable) {
+
+        studentDAO.updateStudent(student, name, email,convertStringToDate(birthdate), gender, address, zipcode, city, country); // Updates the student in the database
+
         student.setName(name);
         student.setEmail(email);
         student.setBirthdate(birthdate);
@@ -55,6 +58,7 @@ public class StudentManager {
         student.setCity(city);
         student.setCountry(country);
         student.setAddress(address);
+        
         studentTable.refresh(); // Refreshes the table
     }
 

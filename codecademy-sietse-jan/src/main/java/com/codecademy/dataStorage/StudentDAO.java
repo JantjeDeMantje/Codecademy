@@ -100,4 +100,33 @@ public class StudentDAO{
             e.printStackTrace();
         }
     }
+
+    public void updateStudent(Student student, String name, String email, Date birthdate, String gender, String address, String zipcode, String city, String country) {
+        String updateAddressSQL = "UPDATE Address SET Zipcode = ?, Address = ?, City = ?, Country = ? WHERE AddressId = ?";
+        String updateStudentSQL = "UPDATE Student SET Name = ?, EmailAddress = ?, Birthday = ?, Gender = ? WHERE StudentId = ?";
+        
+        try (Connection conn = DatabaseConnection.getConnection()) {
+            // Update Address table
+            try (PreparedStatement pstmtAddress = conn.prepareStatement(updateAddressSQL)) {
+                pstmtAddress.setString(1, zipcode);
+                pstmtAddress.setString(2, address);
+                pstmtAddress.setString(3, city);
+                pstmtAddress.setString(4, country);
+                pstmtAddress.setInt(5, student.getAddressId());
+                pstmtAddress.executeUpdate();
+            }
+            
+            // Update Student table
+            try (PreparedStatement pstmtStudent = conn.prepareStatement(updateStudentSQL)) {
+                pstmtStudent.setString(1, name);
+                pstmtStudent.setString(2, email);
+                pstmtStudent.setDate(3, birthdate);
+                pstmtStudent.setString(4, gender);
+                pstmtStudent.setInt(5, student.getStudentId());
+                pstmtStudent.executeUpdate();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }
