@@ -26,11 +26,14 @@ public class StudentManager {
     public Student createStudent(String name, String email, String birthdate, String gender, String address, String zipcode,
             String city, String country, TableView<Student> studentTable) {
 
-        Student newStudent = new Student(name, email, birthdate, gender, address, zipcode, city, country);
+        studentDAO.createStudent(name, email, convertStringToDate(birthdate), gender, address, zipcode, city, country); // Creates the student in the database
+
+        // Retrieve the newly created student from the database
+        ArrayList<Student> students = studentDAO.getAllStudents();
+        Student newStudent = students.get(students.size() - 1);
 
         studentTable.getItems().add(newStudent); // Adds the new student to the table
 
-        studentDAO.createStudent(name, email, convertStringToDate(birthdate), gender, address, zipcode, city, country); // Creates the student in the database
         return newStudent; // returns the new student for log
     }
 
