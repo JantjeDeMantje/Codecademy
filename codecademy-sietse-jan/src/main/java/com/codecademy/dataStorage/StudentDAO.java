@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.sql.Date;
+import java.sql.PreparedStatement;
 
 import com.codecademy.domain.Student;
 
@@ -46,7 +47,39 @@ public class StudentDAO{
         return students;
     }
 
-    public void createStudent(String name, String email, String birthdate, String gender, String zipcode, String city, String country){
+    public void createStudent(String name, String email, Date birthdate, String gender, String address, String zipcode, String city, String country) {
+        String insertAddressSQL = "INSERT INTO Address (Zipcode, Address, City, Country) VALUES (?, ?, ?, ?)";
+        String insertStudentSQL = "INSERT INTO Student (Name, EmailAddress, Birthday, Gender, AddressId) VALUES (?, ?, ?, ?, ?)";
+        
+        try (Connection conn = DatabaseConnection.getConnection()) {
+            // Insert into Address table
+            try (PreparedStatement pstmtAddress = conn.prepareStatement(insertAddressSQL, PreparedStatement.RETURN_GENERATED_KEYS)) {
+                pstmtAddress.setString(1, zipcode);
+                pstmtAddress.setString(2, address);
+                pstmtAddress.setString(3, city);
+                pstmtAddress.setString(4, country);
+                pstmtAddress.executeUpdate();
+                
+                // Get the generated addressID
+                ResultSet rs = pstmtAddress.getGeneratedKeys();
+                if (rs.next()) {
+                    int addressID = rs.getInt(1);
+                    
+                    // Insert into Student table
+                    try (PreparedStatement pstmtStudent = conn.prepareStatement(insertStudentSQL)) {
+                        pstmtStudent.setString(1, name);
+                        pstmtStudent.setString(2, email);
+                        pstmtStudent.setDate(3, birthdate);
+                        pstmtStudent.setString(4, gender);
+                        pstmtStudent.setInt(5, addressID);
+                        pstmtStudent.executeUpdate();
+                    }
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 
     }
 }

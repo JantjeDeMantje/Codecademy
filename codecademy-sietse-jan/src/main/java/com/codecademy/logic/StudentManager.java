@@ -6,6 +6,9 @@ import com.codecademy.domain.Student;
 import javafx.scene.control.TableView;
 
 import java.util.ArrayList;
+import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 
 public class StudentManager {
     private StudentDAO studentDAO;
@@ -23,10 +26,12 @@ public class StudentManager {
     public Student createStudent(String name, String email, String birthdate, String gender, String address, String zipcode,
             String city, String country, TableView<Student> studentTable) {
 
-        // Student newStudent = new Student(name, email, birthdate, gender, zipcode, city, country);
+        Student newStudent = new Student(name, email, birthdate, gender, address, zipcode, city, country);
 
-        // studentTable.getItems().add(newStudent); // Adds the new student to the table
-        return null;
+        studentTable.getItems().add(newStudent); // Adds the new student to the table
+
+        studentDAO.createStudent(name, email, convertStringToDate(birthdate), gender, address, zipcode, city, country); // Creates the student in the database
+        return newStudent; // returns the new student for log
     }
 
     // This method deletes a student object
@@ -46,5 +51,16 @@ public class StudentManager {
         student.setCountry(country);
         student.setAddress(address);
         studentTable.refresh(); // Refreshes the table
+    }
+
+    private Date convertStringToDate(String date) {
+        try {
+            SimpleDateFormat inputFormat = new SimpleDateFormat("dd-MM-yyyy");
+            java.util.Date parsedDate = inputFormat.parse(date);
+            return new Date(parsedDate.getTime());
+        } catch (ParseException e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 }

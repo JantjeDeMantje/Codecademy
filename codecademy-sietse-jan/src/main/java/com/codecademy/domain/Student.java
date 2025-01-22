@@ -15,12 +15,12 @@ public class Student {
     private String country;
     private String address;
 
-    public Student(int studentId, String name, String email, String birthdate, String gender, String zipcode, String city, String country) {
-        this.studentId = studentId;
+    public Student(String name, String email, String birthdate, String gender, String address, String zipcode, String city, String country) {
         this.name = name;
         this.email = email;
         this.birthdate = birthdate;
         this.gender = gender;
+        this.address = address;
         this.zipcode = zipcode;
         this.city = city;
         this.country = country;
