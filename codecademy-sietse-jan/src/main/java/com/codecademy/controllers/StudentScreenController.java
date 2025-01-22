@@ -61,7 +61,13 @@ public class StudentScreenController {
     private TextField genderTEXT;
 
     @FXML
-    private TextField birthdateTEXT;
+    private TextField birthdateDayTEXT;
+
+    @FXML
+    private TextField birthdateMonthTEXT;
+
+    @FXML
+    private TextField birthdateYearTEXT;
 
     @FXML
     private TextField cityTEXT;
@@ -107,7 +113,7 @@ public class StudentScreenController {
         // Sets the textfields to the data of the selected student.
         nameTEXT.setText(selectedStudent.getName());
         emailTEXT.setText(selectedStudent.getEmail());
-        birthdateTEXT.setText(selectedStudent.getBirthdate());
+        setBirthdateText();
         genderTEXT.setText(selectedStudent.getGender());
         zipcodeTEXT.setText(selectedStudent.getZipcode());
         addressTEXT.setText(selectedStudent.getAddress());
@@ -126,7 +132,7 @@ public class StudentScreenController {
 
         Student newStudent = studentManager.createStudent(
                 nameTEXT.getText(), emailTEXT.getText(),
-                birthdateTEXT.getText(), genderTEXT.getText(), addressTEXT.getText(),
+                createDate(birthdateDayTEXT.getText(), birthdateMonthTEXT.getText(), birthdateYearTEXT.getText()), genderTEXT.getText(), addressTEXT.getText(),
                 zipcodeTEXT.getText(), cityTEXT.getText(),
                 countryTEXT.getText(), studentTable);
 
@@ -158,7 +164,7 @@ public class StudentScreenController {
     void handleUpdateButton(ActionEvent event) { // This method handles the update button.
         studentManager.updateStudent(
                 selectedStudent, nameTEXT.getText(), emailTEXT.getText(),
-                birthdateTEXT.getText(), genderTEXT.getText(), addressTEXT.getText(),
+                createDate(birthdateDayTEXT.getText(), birthdateMonthTEXT.getText(), birthdateYearTEXT.getText()), genderTEXT.getText(), addressTEXT.getText(),
                 zipcodeTEXT.getText(), cityTEXT.getText(),
                 countryTEXT.getText(), studentTable);
 
@@ -166,4 +172,16 @@ public class StudentScreenController {
         System.out.println("UpdateStudentButton pressed: " + selectedStudent.getName());
     }
 
+    private void setBirthdateText(){ // This method sets the birthdate text.
+        String[] date = selectedStudent.getBirthdate().split("-");
+        birthdateDayTEXT.setText(date[0]);
+        birthdateMonthTEXT.setText(date[1]);
+        birthdateYearTEXT.setText(date[2]);
+    }
+
+    private String createDate(String day, String month, String year){ // This method creates a date (from 3 textfields).
+        String date = day + "-" + month + "-" + year;
+        System.out.println(date);
+        return date;
+    }
 }
