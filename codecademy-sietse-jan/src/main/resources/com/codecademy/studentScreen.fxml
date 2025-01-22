@@ -74,7 +74,7 @@
             <Font size="18.0" />
          </font>
       </TextField>
-      <TextField fx:id="birthdateTEXT" layoutX="960.0" layoutY="196.0" prefHeight="25.0" prefWidth="200.0">
+      <TextField fx:id="birthdateDayTEXT" layoutX="960.0" layoutY="196.0" prefHeight="40.0" prefWidth="41.0" promptText="dd">
          <font>
             <Font size="18.0" />
          </font>
@@ -110,6 +110,16 @@
          </font>
       </Text>
       <TextField fx:id="countryTEXT" layoutX="960.0" layoutY="441.0" prefHeight="25.0" prefWidth="200.0">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="birthdateMonthTEXT" layoutX="1021.0" layoutY="196.0" prefHeight="40.0" prefWidth="51.0" promptText="mm">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="birthdateYearTEXT" layoutX="1088.0" layoutY="196.0" prefHeight="40.0" prefWidth="72.0" promptText="yyyy">
          <font>
             <Font size="18.0" />
          </font>
