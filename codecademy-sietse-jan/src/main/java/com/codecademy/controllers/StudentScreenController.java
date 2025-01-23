@@ -179,12 +179,16 @@ public class StudentScreenController {
     void handleUpdateButton(ActionEvent event) { // This method handles the update button.
         if (!isValidEmail(emailTEXT.getText())) {
             System.out.println("Invalid email format");
-            showAlert("Ongeldig Email", "Deze email is niet geldig. Voer een geldig emailadres in.");
+            showAlert("Ongeldige Email", "Deze email is niet geldig. Voer een geldig emailadres in. (x@x.x)");
             return;
         }
 
         if (!isValidZipcode(zipcodeTEXT.getText())) {
             System.out.println("Invalid zipcode format");
+            showAlert("Ongeldige Zipcode", "Deze zipcode is niet geldig. Voer een geldige zipcode in. (xxxx XX)");
+            return;
+        }
+
         if (!isValidBirthdate(getDate())){
             System.out.println("Invalid birthdate format");
             showAlert("Ongeldige Geboortedatum", "Deze geboortedatum is niet geldig. Voer een geldige geboortedatum in. (dd-mm-yyyy)");
