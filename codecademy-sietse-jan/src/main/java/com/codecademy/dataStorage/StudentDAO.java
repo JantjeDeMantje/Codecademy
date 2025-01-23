@@ -129,4 +129,18 @@ public class StudentDAO{
             e.printStackTrace();
         }
     }
+
+    public boolean checkUniqueEmail(String email) {
+        String query = "SELECT EmailAddress FROM Student WHERE EmailAddress = ?";
+        try (Connection conn = DatabaseConnection.getConnection()) {
+            try (PreparedStatement pstmt = conn.prepareStatement(query)) {
+                pstmt.setString(1, email);
+                ResultSet rs = pstmt.executeQuery();
+                return !rs.next();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
 }

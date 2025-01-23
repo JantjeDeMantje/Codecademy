@@ -62,6 +62,10 @@ public class StudentManager {
         studentTable.refresh(); // Refreshes the table
     }
 
+    public boolean checkUniqueEmail(String email) {
+        return studentDAO.checkUniqueEmail(email);
+    }
+
     private Date convertStringToDate(String date) {
         try {
             SimpleDateFormat inputFormat = new SimpleDateFormat("dd-MM-yyyy");
@@ -72,4 +76,6 @@ public class StudentManager {
             return null;
         }
     }
+
+
 }
