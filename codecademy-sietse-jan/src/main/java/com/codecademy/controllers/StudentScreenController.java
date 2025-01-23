@@ -197,7 +197,7 @@ public class StudentScreenController {
 
         studentManager.updateStudent(
                 selectedStudent, nameTEXT.getText(), emailTEXT.getText(),
-                createDate(birthdateDayTEXT.getText(), birthdateMonthTEXT.getText(), birthdateYearTEXT.getText()), genderTEXT.getText(), addressTEXT.getText(),
+                getDate(), genderTEXT.getText(), addressTEXT.getText(),
                 zipcodeTEXT.getText(), cityTEXT.getText(),
                 countryTEXT.getText(), studentTable);
 
@@ -251,10 +251,8 @@ public class StudentScreenController {
         birthdateYearTEXT.setText(date[2]);
     }
 
-    private String createDate(String day, String month, String year){ // This method creates a date (from 3 textfields).
-        String date = day + "-" + month + "-" + year;
-        System.out.println(date);
-        return date;
+    private String getDate(){
+        return birthdateDayTEXT.getText() + "-" + birthdateMonthTEXT.getText() + "-" + birthdateYearTEXT.getText();
     }
 
     private void showAlert(String title, String message) {
