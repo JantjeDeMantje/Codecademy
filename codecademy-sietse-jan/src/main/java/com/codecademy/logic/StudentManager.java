@@ -62,8 +62,8 @@ public class StudentManager {
         studentTable.refresh(); // Refreshes the table
     }
 
-    public boolean checkUniqueEmail(String email) {
-        return studentDAO.checkUniqueEmail(email);
+    public boolean checkUniqueEmail(String email, int studentId) {
+        return studentDAO.checkUniqueEmail(email, studentId);
     }
 
     private Date convertStringToDate(String date) {

@@ -130,11 +130,12 @@ public class StudentDAO{
         }
     }
 
-    public boolean checkUniqueEmail(String email) {
-        String query = "SELECT EmailAddress FROM Student WHERE EmailAddress = ?";
+    public boolean checkUniqueEmail(String email, int studentId) {
+        String query = "SELECT EmailAddress FROM Student WHERE EmailAddress = ? AND StudentId != ?";
         try (Connection conn = DatabaseConnection.getConnection()) {
             try (PreparedStatement pstmt = conn.prepareStatement(query)) {
                 pstmt.setString(1, email);
+                pstmt.setInt(2, studentId);
                 ResultSet rs = pstmt.executeQuery();
                 return !rs.next();
             }

@@ -135,7 +135,7 @@ public class StudentScreenController {
 
     @FXML
     void handleCreateButton(ActionEvent event) { // This method handles the create button.
-        if (!checkValidator()) {return;}; // Checks if the input is valid.
+        if (!checkValidator(-1)) {return;}; // Checks if the input is valid.
 
         Student newStudent = studentManager.createStudent(
                 nameTEXT.getText(), emailTEXT.getText(),
@@ -169,7 +169,7 @@ public class StudentScreenController {
 
     @FXML
     void handleUpdateButton(ActionEvent event) { // This method handles the update button.
-        if (!checkValidator()) {return;}; // Checks if the input is valid.
+        if (!checkValidator(selectedStudent.getStudentId())) {return;}; // Checks if the input is valid.
 
         studentManager.updateStudent(
                 selectedStudent, nameTEXT.getText(), emailTEXT.getText(),
@@ -202,14 +202,14 @@ public class StudentScreenController {
 
     // all validator methods:
 
-    private boolean checkValidator(){ // This method checks if the input is valid.
+    private boolean checkValidator(int studentId){ // This method checks if the input is valid.
         if (!isValidEmail(emailTEXT.getText())) {
             System.out.println("Invalid email format");
             showAlert("Ongeldige Email", "Deze email is niet geldig. Voer een geldig emailadres in. (x@x.x)");
             return false;
         } 
         
-        if(!isUniqueEmail(emailTEXT.getText())) {
+        if(!isUniqueEmail(emailTEXT.getText(), studentId)) {
             System.out.println("Email already exists");
             showAlert("Gebruikte Email", "Deze email wordt al gebruikt. Voer een andere email in.");
             return false;
@@ -268,7 +268,7 @@ public class StudentScreenController {
         }
     }
 
-    private boolean isUniqueEmail(String email) { // This method checks if the email is unique.
-        return studentManager.checkUniqueEmail(email);
+    private boolean isUniqueEmail(String email, int studentId) { // This method checks if the email is unique.
+        return studentManager.checkUniqueEmail(email, studentId);
     }
 }
