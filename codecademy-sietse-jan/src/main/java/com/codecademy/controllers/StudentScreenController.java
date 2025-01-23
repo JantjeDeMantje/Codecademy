@@ -1,5 +1,8 @@
 package com.codecademy.controllers;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -144,7 +147,7 @@ public class StudentScreenController {
 
         Student newStudent = studentManager.createStudent(
                 nameTEXT.getText(), emailTEXT.getText(),
-                createDate(birthdateDayTEXT.getText(), birthdateMonthTEXT.getText(), birthdateYearTEXT.getText()), genderTEXT.getText(), addressTEXT.getText(),
+                getDate(), genderTEXT.getText(), addressTEXT.getText(),
                 zipcodeTEXT.getText(), cityTEXT.getText(),
                 countryTEXT.getText(), studentTable);
 
@@ -182,6 +185,9 @@ public class StudentScreenController {
 
         if (!isValidZipcode(zipcodeTEXT.getText())) {
             System.out.println("Invalid zipcode format");
+        if (!isValidBirthdate(getDate())){
+            System.out.println("Invalid birthdate format");
+            showAlert("Ongeldige Geboortedatum", "Deze geboortedatum is niet geldig. Voer een geldige geboortedatum in. (dd-mm-yyyy)");
             return;
         }
 
@@ -207,6 +213,30 @@ public class StudentScreenController {
         Pattern pattern = Pattern.compile(zipcodeRegex);
         Matcher matcher = pattern.matcher(zipcode);
         return matcher.matches();
+    }
+
+    private boolean isValidBirthdate(String birthdate) { // This method checks if the birthdate is valid.
+        String birthdateRegex = "^(0[1-9]|[12][0-9]|3[01])-(0[1-9]|1[0-2])-(\\d{4})$";
+        Pattern pattern = Pattern.compile(birthdateRegex);
+        Matcher matcher = pattern.matcher(birthdate);
+        
+        if (!matcher.matches()) {
+            return false;
+        }
+    
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        try {
+            LocalDate date = LocalDate.parse(birthdate, formatter);
+            
+            // Check if the date is valid like 30-02 or 31-04 etc.
+            if (date.getDayOfMonth() != Integer.parseInt(birthdate.substring(0, 2))) {
+                return false;
+            }
+    
+            return !date.isAfter(LocalDate.now());
+        } catch (DateTimeParseException e) {
+            return false;
+        }
     }
 
 
