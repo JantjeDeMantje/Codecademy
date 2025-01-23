@@ -135,15 +135,7 @@ public class StudentScreenController {
 
     @FXML
     void handleCreateButton(ActionEvent event) { // This method handles the create button.
-        if (!isValidEmail(emailTEXT.getText())) {
-            System.out.println("Invalid email format");
-            return;
-        }
-
-        if (!isValidZipcode(zipcodeTEXT.getText())) {
-            System.out.println("Invalid zipcode format");
-            return;
-        }
+        if (!checkValidator()) {return;}; // Checks if the input is valid.
 
         Student newStudent = studentManager.createStudent(
                 nameTEXT.getText(), emailTEXT.getText(),
@@ -177,23 +169,7 @@ public class StudentScreenController {
 
     @FXML
     void handleUpdateButton(ActionEvent event) { // This method handles the update button.
-        if (!isValidEmail(emailTEXT.getText())) {
-            System.out.println("Invalid email format");
-            showAlert("Ongeldige Email", "Deze email is niet geldig. Voer een geldig emailadres in. (x@x.x)");
-            return;
-        }
-
-        if (!isValidZipcode(zipcodeTEXT.getText())) {
-            System.out.println("Invalid zipcode format");
-            showAlert("Ongeldige Zipcode", "Deze zipcode is niet geldig. Voer een geldige zipcode in. (xxxx XX)");
-            return;
-        }
-
-        if (!isValidBirthdate(getDate())){
-            System.out.println("Invalid birthdate format");
-            showAlert("Ongeldige Geboortedatum", "Deze geboortedatum is niet geldig. Voer een geldige geboortedatum in. (dd-mm-yyyy)");
-            return;
-        }
+        if (!checkValidator()) {return;}; // Checks if the input is valid.
 
         studentManager.updateStudent(
                 selectedStudent, nameTEXT.getText(), emailTEXT.getText(),
@@ -203,6 +179,55 @@ public class StudentScreenController {
 
         // Logs the name of the updated student
         System.out.println("UpdateStudentButton pressed: " + selectedStudent.getName());
+    }
+
+    private void setBirthdateText(){ // This method sets the birthdate text.
+        String[] date = selectedStudent.getBirthdate().split("-");
+        birthdateDayTEXT.setText(date[0]);
+        birthdateMonthTEXT.setText(date[1]);
+        birthdateYearTEXT.setText(date[2]);
+    }
+
+    private String getDate(){
+        return birthdateDayTEXT.getText() + "-" + birthdateMonthTEXT.getText() + "-" + birthdateYearTEXT.getText();
+    }
+
+    private void showAlert(String title, String message) { // This method shows an alert popup.
+        javafx.scene.control.Alert alert = new javafx.scene.control.Alert(javafx.scene.control.Alert.AlertType.INFORMATION);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
+
+    // all validator methods:
+
+    private boolean checkValidator(){ // This method checks if the input is valid.
+        if (!isValidEmail(emailTEXT.getText())) {
+            System.out.println("Invalid email format");
+            showAlert("Ongeldige Email", "Deze email is niet geldig. Voer een geldig emailadres in. (x@x.x)");
+            return false;
+        } 
+        
+        if(!isUniqueEmail(emailTEXT.getText())) {
+            System.out.println("Email already exists");
+            showAlert("Gebruikte Email", "Deze email wordt al gebruikt. Voer een andere email in.");
+            return false;
+        }
+
+        if (!isValidZipcode(zipcodeTEXT.getText())) {
+            System.out.println("Invalid zipcode format");
+            showAlert("Ongeldige Zipcode", "Deze zipcode is niet geldig. Voer een geldige zipcode in. (xxxx XX)");
+            return false;
+        }
+
+        if (!isValidBirthdate(getDate())){
+            System.out.println("Invalid birthdate format");
+            showAlert("Ongeldige Geboortedatum", "Deze geboortedatum is niet geldig. Voer een geldige geboortedatum in. (dd-mm-yyyy)");
+            return false;
+        }
+
+        return true;
     }
 
     private boolean isValidEmail(String email) { // This method checks if the email is valid.
@@ -243,23 +268,7 @@ public class StudentScreenController {
         }
     }
 
-
-    private void setBirthdateText(){ // This method sets the birthdate text.
-        String[] date = selectedStudent.getBirthdate().split("-");
-        birthdateDayTEXT.setText(date[0]);
-        birthdateMonthTEXT.setText(date[1]);
-        birthdateYearTEXT.setText(date[2]);
-    }
-
-    private String getDate(){
-        return birthdateDayTEXT.getText() + "-" + birthdateMonthTEXT.getText() + "-" + birthdateYearTEXT.getText();
-    }
-
-    private void showAlert(String title, String message) {
-        javafx.scene.control.Alert alert = new javafx.scene.control.Alert(javafx.scene.control.Alert.AlertType.INFORMATION);
-        alert.setTitle(title);
-        alert.setHeaderText(null);
-        alert.setContentText(message);
-        alert.showAndWait();
+    private boolean isUniqueEmail(String email) { // This method checks if the email is unique.
+        return studentManager.checkUniqueEmail(email);
     }
 }
