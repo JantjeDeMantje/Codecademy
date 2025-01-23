@@ -21,7 +21,7 @@
       <Button fx:id="createBTN" layoutX="640.0" layoutY="511.0" mnemonicParsing="false" onAction="#handleCreateButton" prefHeight="70.0" prefWidth="200.0" text="Maak aan" AnchorPane.leftAnchor="640.0" />
       <Button fx:id="registerBTN" layoutX="960.0" layoutY="609.0" mnemonicParsing="false" onAction="#handleRegisterButton" prefHeight="70.0" prefWidth="200.0" text="Schrijf in" AnchorPane.rightAnchor="40.0" />
       <Button fx:id="deleteBTN" layoutX="640.0" layoutY="609.0" mnemonicParsing="false" onAction="#handleDeleteButton" prefHeight="70.0" prefWidth="200.0" text="Verwijder" AnchorPane.leftAnchor="640.0" />
-      <Button fx:id="updateBTN" layoutX="960.0" layoutY="501.0" mnemonicParsing="false" onAction="#handleUpdateButton" prefHeight="70.0" prefWidth="200.0" text="Update" AnchorPane.rightAnchor="40.0" />
+      <Button fx:id="updateBTN" layoutX="960.0" layoutY="511.0" mnemonicParsing="false" onAction="#handleUpdateButton" prefHeight="70.0" prefWidth="200.0" text="Update" AnchorPane.rightAnchor="40.0" />
       <Text fx:id="studentsLAB" layoutX="704.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Studenten" textAlignment="CENTER" wrappingWidth="395.13671875" AnchorPane.leftAnchor="704.0" AnchorPane.rightAnchor="100.86328125">
          <font>
             <Font size="48.0" />
@@ -74,7 +74,7 @@
             <Font size="18.0" />
          </font>
       </TextField>
-      <TextField fx:id="birthdateDayTEXT" layoutX="960.0" layoutY="196.0" prefHeight="40.0" prefWidth="41.0" promptText="dd">
+      <TextField fx:id="birthdateDayTEXT" alignment="CENTER" layoutX="960.0" layoutY="196.0" prefHeight="40.0" prefWidth="50.0" promptText="dd">
          <font>
             <Font size="18.0" />
          </font>
@@ -114,12 +114,12 @@
             <Font size="18.0" />
          </font>
       </TextField>
-      <TextField fx:id="birthdateMonthTEXT" layoutX="1021.0" layoutY="196.0" prefHeight="40.0" prefWidth="51.0" promptText="mm">
+      <TextField fx:id="birthdateMonthTEXT" alignment="CENTER" layoutX="1024.0" layoutY="196.0" prefHeight="40.0" prefWidth="50.0" promptText="mm">
          <font>
             <Font size="18.0" />
          </font>
       </TextField>
-      <TextField fx:id="birthdateYearTEXT" layoutX="1088.0" layoutY="196.0" prefHeight="40.0" prefWidth="72.0" promptText="yyyy">
+      <TextField fx:id="birthdateYearTEXT" alignment="CENTER" layoutX="1088.0" layoutY="196.0" prefHeight="40.0" prefWidth="72.0" promptText="yyyy">
          <font>
             <Font size="18.0" />
          </font>
