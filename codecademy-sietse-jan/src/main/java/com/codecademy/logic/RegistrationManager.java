@@ -35,12 +35,7 @@ public class RegistrationManager {
     }
 
     public Course getCourseInfo(String courseName){ // This method sends all the course information that match with the courseName.
-        for (Course course : courses ){
-            if (course.getCourseName() == courseName) {
-                        return course;
-            }
-        }
-        return null; // No match? --> null
+        return courseManager.getCourseInfo(courseName);
     }
 
     public void createRegistration(Student student, Course course, TableView<Map.Entry<String,Boolean>> courseRegistrationTable ){
@@ -50,5 +45,4 @@ public class RegistrationManager {
     public void deleteRegistration(Student student, Course course, TableView<Map.Entry<String,Boolean>> courseRegistrationTable){
         courseRegistrationTable.refresh(); 
     }
-
 }

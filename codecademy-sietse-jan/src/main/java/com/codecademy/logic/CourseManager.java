@@ -12,8 +12,11 @@ public class CourseManager {
         courseDAO = new CourseDAO();
     }
 
-        // This method returns the students arraylist
-    public ArrayList<Course> getCourses() {
+    public ArrayList<Course> getCourses() { // This method returns the students arraylist
         return courseDAO.getAllCourses();
+    }
+
+    public Course getCourseInfo(String courseName) { // This method sends all the course information that match with the courseName.
+        return courseDAO.getCourseInfo(courseName);
     }
 }
