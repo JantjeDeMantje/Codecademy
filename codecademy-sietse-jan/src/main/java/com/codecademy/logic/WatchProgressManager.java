@@ -7,6 +7,7 @@ import java.util.Map;
 import com.codecademy.domain.Student;
 import com.codecademy.domain.WatchPercentage;
 import com.codecademy.domain.Module;
+import com.codecademy.domain.Course;
 
 public class WatchProgressManager {
 
@@ -16,10 +17,10 @@ public class WatchProgressManager {
     private StudentManager studentManager;
     private ModuleManager moduleManager;
 
-    public WatchProgressManager() {
+    public WatchProgressManager(Course course) {
         watchPercentages = new ArrayList<>();
         loadStudentManager();
-        loadModuleManager();
+        loadModuleManager(course);
         createDummyData();
         getAverageWatchPercentagePerStudent();
     }
@@ -37,9 +38,9 @@ public class WatchProgressManager {
         this.students = studentManager.getStudents();
     }
 
-    private void loadModuleManager() { // Loads all modules
+    private void loadModuleManager(Course course) { // Loads all modules
         moduleManager = new ModuleManager();
-        this.modules = moduleManager.getModules();
+        this.modules = moduleManager.getModules(course);
     }
 
     protected ArrayList<WatchPercentage> getWatchPercentages() {

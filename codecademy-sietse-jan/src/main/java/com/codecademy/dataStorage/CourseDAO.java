@@ -5,7 +5,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.sql.PreparedStatement;
 
 import com.codecademy.domain.Course;
 import com.codecademy.domain.Difficulty;

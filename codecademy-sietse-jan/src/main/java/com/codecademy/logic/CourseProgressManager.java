@@ -19,11 +19,11 @@ public class CourseProgressManager {
     private Map<Module, Double> averageWatchPercentagePerModule;
 
     public CourseProgressManager(Course course) {
-        loadWatchProgressManager();
+        loadWatchProgressManager(course);
     }
 
-    private void loadWatchProgressManager() { // Loads all watchProgresses
-        watchProgressManager = new WatchProgressManager();
+    private void loadWatchProgressManager(Course course) { // Loads all watchProgresses
+        watchProgressManager = new WatchProgressManager(course);
         this.watchPercentages = watchProgressManager.getWatchPercentages();
         this.averageWatchPercentagePerStudent = watchProgressManager.getAverageWatchPercentagePerStudent();
         this.averageWatchPercentagePerModule = watchProgressManager.getAverageWatchPercentagePerModule();
