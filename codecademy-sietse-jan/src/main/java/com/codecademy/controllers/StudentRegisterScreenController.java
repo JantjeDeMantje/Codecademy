@@ -153,7 +153,7 @@ public class StudentRegisterScreenController {
             selectedRow.setValue(true); // Sets the state true
 
             // Let the manager create a registration.
-            registrationManager.createRegistration(selectedStudent, getCourseInfo(), courseRegistrationTable);
+            registrationManager.createRegistration(selectedStudent.getStudentId(), getCourseInfo().getCourseName(), courseRegistrationTable);
         } else {
             System.out.println("Persoon is al geregistreerd bij deze cursus.");
         }

@@ -38,7 +38,8 @@ public class RegistrationManager {
         return courseManager.getCourseInfo(courseName);
     }
 
-    public void createRegistration(Student student, Course course, TableView<Map.Entry<String,Boolean>> courseRegistrationTable ){
+    public void createRegistration(int studentId, String courseName, TableView<Map.Entry<String,Boolean>> courseRegistrationTable ){
+        registrationDAO.createRegistration(studentId, courseName);
         courseRegistrationTable.refresh();
     }
 

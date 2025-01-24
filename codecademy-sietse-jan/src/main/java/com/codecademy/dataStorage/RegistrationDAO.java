@@ -36,4 +36,26 @@ public class RegistrationDAO {
         }
         return registrations;
     }
+
+    public void createRegistration(int studentId, String courseName) {
+        Connection connection = DatabaseConnection.getConnection();
+        if (connection != null) {
+            try {
+                String query = "INSERT INTO Registration (StudentId, CourseName) VALUES (?, ?)";
+                PreparedStatement preparedStatement = connection.prepareStatement(query);
+                preparedStatement.setInt(1, studentId);
+                preparedStatement.setString(2, courseName);
+                preparedStatement.executeUpdate();
+                System.out.println("Registration created: " + courseName);
+            } catch (SQLException e) {
+                System.out.println("Error: " + e.getMessage());
+            } finally {
+                try {
+                    connection.close();
+                } catch (SQLException e) {
+                    System.out.println("Error closing connection: " + e.getMessage());
+                }
+            }
+        }
+    }
 }
