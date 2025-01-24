@@ -156,6 +156,7 @@ public class StudentRegisterScreenController {
             registrationManager.createRegistration(selectedStudent.getStudentId(), getCourseInfo().getCourseName(), courseRegistrationTable);
         } else {
             System.out.println("Persoon is al geregistreerd bij deze cursus.");
+            showAlert("Persoon al ingeschreven", "Deze persoon is al ingeschreven voor deze cursus."); // Shows an alert popup.
         }
     }
 
@@ -170,6 +171,7 @@ public class StudentRegisterScreenController {
             registrationManager.deleteRegistration(selectedStudent.getStudentId(), getCourseInfo().getCourseName(), courseRegistrationTable);
         } else {
             System.out.println("Persoon is niet geregistreerd bij deze cursus.");
+            showAlert("Persoon al uitgeschreven", "Deze persoon is al uitgeschreven voor deze cursus, of was nooit ingeschreven."); // Shows an alert popup.
         }
     }
 
@@ -177,5 +179,13 @@ public class StudentRegisterScreenController {
     void handleBackButton(ActionEvent event) {
         System.out.println("Back button clicked"); // Logs the activation of the back button.
         GUI.instance.setRoot("studentScreen.fxml"); // Loads the new fxml in.
+    }
+
+    private void showAlert(String title, String message) { // This method shows an alert popup.
+        javafx.scene.control.Alert alert = new javafx.scene.control.Alert(javafx.scene.control.Alert.AlertType.INFORMATION);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 }
