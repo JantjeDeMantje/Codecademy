@@ -20,6 +20,11 @@ public class Webcast {
         this.views = views;
     }
 
+    public Webcast (String title, int views){ // Constructor for the top 3 webcasts
+        this.title = title;
+        this.views = views;
+    }
+
     public String getTitle() {
         return title;
     }
