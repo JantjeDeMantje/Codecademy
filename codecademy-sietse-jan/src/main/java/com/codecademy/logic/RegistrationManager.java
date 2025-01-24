@@ -3,6 +3,7 @@ package com.codecademy.logic;
 import java.util.ArrayList;
 import java.util.Map;
 
+import com.codecademy.dataStorage.RegistrationDAO;
 import com.codecademy.domain.Course;
 import com.codecademy.domain.Registration;
 import com.codecademy.domain.Student;
@@ -11,19 +12,13 @@ import javafx.scene.control.TableView;
 
 public class RegistrationManager {
     private CourseManager courseManager;
+    private RegistrationDAO registrationDAO;
 
-    private ArrayList<Registration> registrations = new ArrayList<>();
     private ArrayList<Course> courses = new ArrayList<>();
     
     public RegistrationManager(Student student) {
+        registrationDAO = new RegistrationDAO();
         loadCourseManager();
-        createDummyData(student);
-    }
-
-    private void createDummyData(Student student) { // This method creates the temp. dummy data
-        registrations.add(new Registration(student, courses.get(1), "20-03-2024"));
-        registrations.add(new Registration(student, courses.get(3), "24-05-2024"));
-        registrations.add(new Registration(student, courses.get(4), "01-08-2024"));
     }
 
     private void loadCourseManager(){ // This method loads all information needed from the courseManager.
@@ -31,8 +26,8 @@ public class RegistrationManager {
         this.courses = courseManager.getCourses();
     }
 
-    public ArrayList<Registration> getRegistrations() {
-        return registrations;
+    public ArrayList<Registration> getRegistrations(int studentId){ // This method sends all the registrations that match with the studentId.{
+        return registrationDAO.findRegistrationsByStudentId(studentId);
     }
 
     public ArrayList<Course> getCourses(){
