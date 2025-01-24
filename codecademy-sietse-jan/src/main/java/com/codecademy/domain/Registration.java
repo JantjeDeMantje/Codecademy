@@ -2,30 +2,30 @@ package com.codecademy.domain;
 
 public class Registration {
 
-    private Student student;
-    private Course course;
+    private int studentId;
+    private String courseName;
     private String registrationDate;
 
-    public Registration(Student student, Course course, String registrationDate) {
-        this.student = student;
-        this.course = course;
+    public Registration(int studentId, String courseName, String registrationDate) {
+        this.studentId = studentId;
+        this.courseName = courseName;
         this.registrationDate = registrationDate;
     }
 
-    public Student getStudent() {
-        return student;
+    public int getStudentId() {
+        return studentId;
     }
 
-    public void setStudent(Student student) {
-        this.student = student;
+    public void setStudentId(int studentId) {
+        this.studentId = studentId;
     }
 
-    public Course getCourse() {
-        return course;
+    public String getCourseName() {
+        return courseName;
     }
 
-    public void setCourse(Course course) {
-        this.course = course;
+    public void setCourseName(String courseName) {
+        this.courseName = courseName;
     }
 
     public String getRegistrationDate() {
