@@ -58,4 +58,26 @@ public class RegistrationDAO {
             }
         }
     }
+
+    public void deleteRegistration(int studentId, String courseName) {
+        Connection connection = DatabaseConnection.getConnection();
+        if (connection != null) {
+            try {
+                String query = "DELETE FROM Registration WHERE StudentId = ? AND CourseName = ?";
+                PreparedStatement preparedStatement = connection.prepareStatement(query);
+                preparedStatement.setInt(1, studentId);
+                preparedStatement.setString(2, courseName);
+                preparedStatement.executeUpdate();
+                System.out.println("Registration removed: " + courseName);
+            } catch (SQLException e) {
+                System.out.println("Error: " + e.getMessage());
+            } finally {
+                try {
+                    connection.close();
+                } catch (SQLException e) {
+                    System.out.println("Error closing connection: " + e.getMessage());
+                }
+            }
+        }
+    }
 }

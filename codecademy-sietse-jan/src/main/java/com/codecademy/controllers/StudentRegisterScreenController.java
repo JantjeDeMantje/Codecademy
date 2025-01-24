@@ -167,7 +167,7 @@ public class StudentRegisterScreenController {
             selectedRow.setValue(false); // Sets the state false
             
             // let the manager delete a registration.
-            registrationManager.deleteRegistration(selectedStudent, getCourseInfo(), courseRegistrationTable);
+            registrationManager.deleteRegistration(selectedStudent.getStudentId(), getCourseInfo().getCourseName(), courseRegistrationTable);
         } else {
             System.out.println("Persoon is niet geregistreerd bij deze cursus.");
         }
