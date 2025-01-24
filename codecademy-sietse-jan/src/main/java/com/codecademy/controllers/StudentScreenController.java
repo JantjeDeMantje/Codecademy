@@ -148,6 +148,12 @@ public class StudentScreenController {
 
     @FXML
     void handleDeleteButton(ActionEvent event) { // This method handles the delete button.
+        if (selectedStudent == null) { // Checks if a student is selected.
+            System.out.println("No student selected.");
+            showAlert("Geen Student Geselecteerd", "Selecteer een student om te verwijderen.");
+            return;
+        }
+
         // Logs the name of the deleted student
         System.out.println("DeleteStudentButton pressed: " + selectedStudent.getName());
 
@@ -156,9 +162,9 @@ public class StudentScreenController {
 
     @FXML
     void handleRegisterButton(ActionEvent event) { // This method handles the register button.
-        Student selectedStudent = studentTable.getSelectionModel().getSelectedItem();
-        if (selectedStudent == null) {
-            System.out.println("No student selected.");
+        if (selectedStudent == null) { // Checks if a student is selected.
+            System.out.println("No student selected."); 
+            showAlert("Geen Student Geselecteerd", "Selecteer een student om te registreren.");
             return;
         }
 
@@ -169,6 +175,12 @@ public class StudentScreenController {
 
     @FXML
     void handleUpdateButton(ActionEvent event) { // This method handles the update button.
+        if (selectedStudent == null) {// Checks if a student is selected.
+            System.out.println("No student selected.");
+            showAlert("Geen Student Geselecteerd", "Selecteer een student om te updaten.");
+            return;
+        }
+
         if (!checkValidator(selectedStudent.getStudentId())) {return;}; // Checks if the input is valid.
 
         studentManager.updateStudent(
