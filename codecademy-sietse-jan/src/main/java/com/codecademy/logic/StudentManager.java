@@ -66,7 +66,7 @@ public class StudentManager {
         return studentDAO.checkUniqueEmail(email, studentId);
     }
 
-    private Date convertStringToDate(String date) {
+    public Date convertStringToDate(String date) {
         try {
             SimpleDateFormat inputFormat = new SimpleDateFormat("dd-MM-yyyy");
             java.util.Date parsedDate = inputFormat.parse(date);
@@ -80,4 +80,5 @@ public class StudentManager {
     public Student getStudentInfoById(int studentId) {
         return studentDAO.getStudentInfoById(studentId);
     }
+
 }

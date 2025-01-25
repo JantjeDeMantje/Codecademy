@@ -242,21 +242,21 @@ public class StudentScreenController {
         return true;
     }
 
-    private boolean isValidEmail(String email) { // This method checks if the email is valid.
+    public boolean isValidEmail(String email) { // This method checks if the email is valid.
         String emailRegex = "^[a-zA-Z]+(\\.[a-zA-Z]+)*@[a-zA-Z]+\\.[a-zA-Z]+$";
         Pattern pattern = Pattern.compile(emailRegex);
         Matcher matcher = pattern.matcher(email);
         return matcher.matches();
     }
 
-    private boolean isValidZipcode(String zipcode) { // This method checks if the zipcode is valid.
+    public boolean isValidZipcode(String zipcode) { // This method checks if the zipcode is valid.
         String zipcodeRegex = "^[1-9][0-9]{3} [A-Z]{2}$";
         Pattern pattern = Pattern.compile(zipcodeRegex);
         Matcher matcher = pattern.matcher(zipcode);
         return matcher.matches();
     }
 
-    private boolean isValidBirthdate(String birthdate) { // This method checks if the birthdate is valid.
+    public boolean isValidBirthdate(String birthdate) { // This method checks if the birthdate is valid.
         String birthdateRegex = "^(0[1-9]|[12][0-9]|3[01])-(0[1-9]|1[0-2])-(\\d{4})$";
         Pattern pattern = Pattern.compile(birthdateRegex);
         Matcher matcher = pattern.matcher(birthdate);
