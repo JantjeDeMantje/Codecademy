@@ -10,6 +10,8 @@ import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
+
+// This class is the manager of the Students. It is responsible for the communication between the DAO and other classes.
 public class StudentManager {
     private StudentDAO studentDAO;
 
@@ -62,10 +64,15 @@ public class StudentManager {
         studentTable.refresh(); // Refreshes the table
     }
 
+    // This method checks if the email is unique
     public boolean checkUniqueEmail(String email, int studentId) {
         return studentDAO.checkUniqueEmail(email, studentId);
     }
 
+
+    
+
+    // This method converts a string to a date
     public Date convertStringToDate(String date) {
         try {
             SimpleDateFormat inputFormat = new SimpleDateFormat("dd-MM-yyyy");
@@ -77,6 +84,7 @@ public class StudentManager {
         }
     }
 
+    // This method sends all the student information that match with the studentId.
     public Student getStudentInfoById(int studentId) {
         return studentDAO.getStudentInfoById(studentId);
     }

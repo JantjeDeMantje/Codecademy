@@ -11,6 +11,7 @@ import com.codecademy.domain.Difficulty;
 
 public class CourseDAO {
 
+    // This query retrieves all courses from the database.
     public ArrayList<Course> getAllCourses() {
         ArrayList<Course> courses = new ArrayList<>();
         Connection connection = DatabaseConnection.getConnection();
@@ -40,6 +41,7 @@ public class CourseDAO {
         return courses;
     }
 
+    // This query gets specific information about a course by its name.
     public Course getCourseInfo(String courseName) {
         Course course = null;
         Connection connection = DatabaseConnection.getConnection();

@@ -10,6 +10,7 @@ import java.util.Map;
 
 public class ContentItemDAO {
     
+    // This query retrieves all content item ids from the ContentItem table that are associated with a specific course name.
     public ArrayList<Integer> getContentItemIdsByCourse(String courseName) {
         ArrayList<Integer> contentItemIds = new ArrayList<>();
         String query = "SELECT ContentItemId FROM ContentItem WHERE CourseName = ?";
@@ -31,6 +32,7 @@ public class ContentItemDAO {
         return contentItemIds;
     }
 
+    // This query retrieves all titles from the webcast table that are associated with the content items.
     public Map<Integer, String> getModulesTitlesMap(ArrayList<Integer> contentItemIds) {
         Map<Integer, String> moduleTitlesMap = new HashMap<>();
         String query = "SELECT ContentItemId, Title FROM ContentItem JOIN Module ON ContentItemId = ModuleId WHERE ContentItemId = ?";
@@ -54,6 +56,7 @@ public class ContentItemDAO {
         return moduleTitlesMap;
     }
 
+    // This query retrieves all titles from the webcast table that are associated with the content items.
     public Map<Integer, String> getWebcastTitlesMap(ArrayList<Integer> contentItemIds) {
         Map<Integer, String> webcastTitlesMap = new HashMap<>();
         String query = "SELECT ContentItemId, Title FROM ContentItem JOIN Webcast ON ContentItemId = WebcastId WHERE ContentItemId = ?";

@@ -7,7 +7,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class WatchProgressDAO {
-    public double getAverageWatchPercentageByStudent(int studentId, ArrayList<Integer> contentItemIds) {
+
+    // This query gets the average watch percentage of a student for a list of content items
+    public double getAverageWatchPercentageByStudent(int studentId, ArrayList<Integer> contentItemIds) { 
         double totalWatchPercentage = 0.0;
         int count = 0;
         String query = "SELECT WatchPercentage FROM WatchPercentage WHERE StudentId = ? AND ContentItemId = ?";
@@ -35,6 +37,7 @@ public class WatchProgressDAO {
         return count > 0 ? totalWatchPercentage / count : 0.0;
     }
 
+    // This query gets the average watch percentage of all students for a content item
     public double getAverageWatchPercentageByContentItem(int contentItemId) {
         double averageWatchPercentage = 0.0;
         String query = "SELECT AVG(WatchPercentage) AS WatchPercentageAVG FROM WatchPercentage WHERE ContentItemId = ?";
@@ -56,6 +59,7 @@ public class WatchProgressDAO {
         return averageWatchPercentage;
     }
 
+    // This query gets the watch percentage of a student for a content item
     public double getWatchPercentageByStudentAndContentItem(int studentId, int contentItemId){
         double watchPercentage = 0.0;
         String query = "SELECT WatchPercentage FROM WatchPercentage WHERE StudentId = ? AND ContentItemId = ?";

@@ -10,7 +10,7 @@ public class DataHolder { // This class holds the selected student and course, s
 
     private static final DataHolder holder = new DataHolder();
 
-    public static DataHolder getInstance() {
+    public static DataHolder getInstance() { // This method returns the instance of the DataHolder class (Singleton pattern)
         return holder;
     } 
 
