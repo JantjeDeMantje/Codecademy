@@ -14,6 +14,7 @@ public class CourseProgressManager {
     private StudentManager studentManager;
     private WatchProgressManager watchProgressManager;
     private Course selectedCourse;
+    private ArrayList<Integer> contentItemIds;
 
     public CourseProgressManager(Course course) {
         registrationManager = new RegistrationManager();
@@ -21,6 +22,8 @@ public class CourseProgressManager {
         studentManager = new StudentManager();
         watchProgressManager = new WatchProgressManager();
         selectedCourse = course;
+
+        contentItemIds = getContentItemIds();
     }
 
     private ArrayList<Integer> getStudents(){
@@ -36,29 +39,32 @@ public class CourseProgressManager {
 
         for (int student : getStudents()) {
             Student studentInfo = getStudentInfoById(student);
-            averageWatchPercentagePerStudent.put(studentInfo, watchProgressManager.getAverageWatchPercentageByStudent(student));
+            averageWatchPercentagePerStudent.put(studentInfo, watchProgressManager.getAverageWatchPercentageByStudent(student, contentItemIds));
         }
 
         return averageWatchPercentagePerStudent;
     }
 
 
-    private ArrayList<Integer> getContentItemIds(){
+    private ArrayList<Integer> getContentItemIds() {
         return contentItemManager.getContentItemIdsByCourse(selectedCourse.getCourseName());
     }
 
-    private ArrayList<String> getContentItemTitles(){
-        return contentItemManager.getContentItemTitles(getContentItemIds());
+    private Map<Integer, String> getContentItemTitlesMap(ArrayList<Integer> contentItemIds) {
+        return contentItemManager.getContentItemTitlesMap(contentItemIds);
     }
 
-    public Map<String, Double> getAverageWatchPercentagePerContentItem(){
+    public Map<String, Double> getAverageWatchPercentagePerContentItem() {
         Map<String, Double> averageWatchPercentagePerContentItem = new HashMap<>();
 
-        for (String contentItemTitle : getContentItemTitles()) {
-            averageWatchPercentagePerContentItem.put(contentItemTitle, 1.1);
+        Map<Integer, String> contentItemTitlesMap = getContentItemTitlesMap(contentItemIds);
+
+        for (int contentItemId : contentItemIds) {
+            String contentItemTitle = contentItemTitlesMap.get(contentItemId);
+            double averagePercentage = watchProgressManager.getAverageWatchPercentageByContentItem(contentItemId);
+            averageWatchPercentagePerContentItem.put(contentItemTitle, averagePercentage);
         }
 
         return averageWatchPercentagePerContentItem;
     }
-
 }

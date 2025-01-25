@@ -1,6 +1,8 @@
 package com.codecademy.logic;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import com.codecademy.dataStorage.ContentItemDAO;
 
@@ -15,12 +17,10 @@ public class ContentItemManager {
         return contentItemDAO.getContentItemIdsByCourse(courseName);
     }
 
-    public ArrayList<String> getContentItemTitles(ArrayList<Integer> contentItemIds) {
-        ArrayList<String> modules = contentItemDAO.getModulesTitles(contentItemIds);
-        ArrayList<String> webcasts = contentItemDAO.getWebcastTitles(contentItemIds);
-        ArrayList<String> allTitles = new ArrayList<>();
-        allTitles.addAll(modules);
-        allTitles.addAll(webcasts);
-        return allTitles; 
+    public Map<Integer, String> getContentItemTitlesMap(ArrayList<Integer> contentItemIds) {
+        Map<Integer, String> contentItemTitlesMap = new HashMap<>();
+        contentItemTitlesMap.putAll(contentItemDAO.getModulesTitlesMap(contentItemIds));
+        contentItemTitlesMap.putAll(contentItemDAO.getWebcastTitlesMap(contentItemIds));
+        return contentItemTitlesMap;
     }
 }
