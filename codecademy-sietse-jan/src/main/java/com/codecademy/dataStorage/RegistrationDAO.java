@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import com.codecademy.domain.Registration;
 
 public class RegistrationDAO {
+    // This query is used to find all registrations for a student by studentId
     public ArrayList<Registration> findRegistrationsByStudentId(int studentId) {
         ArrayList<Registration> registrations = new ArrayList<>();
         Connection connection = DatabaseConnection.getConnection();
@@ -37,6 +38,7 @@ public class RegistrationDAO {
         return registrations;
     }
 
+    // This query is used to create a registration for a student
     public void createRegistration(int studentId, String courseName) {
         Connection connection = DatabaseConnection.getConnection();
         if (connection != null) {
@@ -59,6 +61,7 @@ public class RegistrationDAO {
         }
     }
 
+    // This query is used to delete a registration for a student
     public void deleteRegistration(int studentId, String courseName) {
         Connection connection = DatabaseConnection.getConnection();
         if (connection != null) {
@@ -81,6 +84,7 @@ public class RegistrationDAO {
         }
     }
 
+    // This query is used to find all registrations for a course by courseName
     public ArrayList<Integer> findRegistrationsByCourse(String courseName) {
         System.out.println("RegistrationDAO.findRegistrationsByCourse() called: " + courseName);
         ArrayList<Integer> studentIds = new ArrayList<>();

@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import com.codecademy.domain.Webcast;
 
 public class WebcastDAO {
+
+    // This query selects the top 3 webcasts based on the number of views.
     public ArrayList<Webcast> getTop3Webcasts(){
         ArrayList<Webcast> webcasts = new ArrayList<>();
         Connection connection = DatabaseConnection.getConnection();

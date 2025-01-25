@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import com.codecademy.dataStorage.CourseDAO;
 import com.codecademy.domain.Course;
 
+// This class is the manager of the courses. It is responsible for the communication between the DAO and other classes.
 public class CourseManager {
     private CourseDAO courseDAO;
 

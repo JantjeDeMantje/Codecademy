@@ -12,6 +12,7 @@ import com.codecademy.domain.Student;
 
 public class StudentDAO{
 
+    // This query selects all students from the Student table and joins them with the Address table to get the address information.
     public ArrayList<Student> getAllStudents() {
         ArrayList<Student> students = new ArrayList<>();
         Connection connection = DatabaseConnection.getConnection();
@@ -48,6 +49,7 @@ public class StudentDAO{
         return students;
     }
 
+    // This query inserts a new student into the Student table and the corresponding address into the Address table.
     public void createStudent(String name, String email, Date birthdate, String gender, String address, String zipcode, String city, String country) {
         String insertAddressSQL = "INSERT INTO Address (Zipcode, Address, City, Country) VALUES (?, ?, ?, ?)";
         String insertStudentSQL = "INSERT INTO Student (Name, EmailAddress, Birthday, Gender, AddressId) VALUES (?, ?, ?, ?, ?)";
@@ -82,6 +84,7 @@ public class StudentDAO{
         }
     }
 
+    // This query deletes a student from the Student table and the corresponding address from the Address table.
     public void deleteStudent (Student student) {
         String deleteStudentSQL = "DELETE FROM Student WHERE StudentId = ?";
         String deleteAddressSQL = "DELETE FROM Address WHERE AddressId = ?";
@@ -101,6 +104,7 @@ public class StudentDAO{
         }
     }
 
+    // This query updates a student in the Student table and the corresponding address in the Address table.
     public void updateStudent(Student student, String name, String email, Date birthdate, String gender, String address, String zipcode, String city, String country) {
         String updateAddressSQL = "UPDATE Address SET Zipcode = ?, Address = ?, City = ?, Country = ? WHERE AddressId = ?";
         String updateStudentSQL = "UPDATE Student SET Name = ?, EmailAddress = ?, Birthday = ?, Gender = ? WHERE StudentId = ?";
@@ -130,6 +134,7 @@ public class StudentDAO{
         }
     }
 
+    // This query checks if an email address is unique in the Student table.
     public boolean checkUniqueEmail(String email, int studentId) {
         String query = "SELECT EmailAddress FROM Student WHERE EmailAddress = ? AND StudentId != ?";
         try (Connection conn = DatabaseConnection.getConnection()) {
@@ -145,6 +150,7 @@ public class StudentDAO{
         }
     }
 
+    // This query gets a student by their studentId from the Student table and joins them with the Address table to get the address information.
     public Student getStudentInfoById(int studentId) {
         Student student = null;
         Connection connection = DatabaseConnection.getConnection();

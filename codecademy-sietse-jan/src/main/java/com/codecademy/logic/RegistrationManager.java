@@ -9,6 +9,7 @@ import com.codecademy.domain.Registration;
 
 import javafx.scene.control.TableView;
 
+// This class is the manager of the Registrations. It is responsible for the communication between the DAO and other classes.
 public class RegistrationManager {
     private CourseManager courseManager;
     private RegistrationDAO registrationDAO;
@@ -41,11 +42,13 @@ public class RegistrationManager {
         return courseManager.getCourseInfo(courseName);
     }
 
+    // This method creates a registration for a student in a course.
     public void createRegistration(int studentId, String courseName, TableView<Map.Entry<String,Boolean>> courseRegistrationTable ){
         registrationDAO.createRegistration(studentId, courseName);
         courseRegistrationTable.refresh();
     }
 
+    // This method deletes a registration for a student in a course.
     public void deleteRegistration(int studentId, String courseName, TableView<Map.Entry<String,Boolean>> courseRegistrationTable){
         registrationDAO.deleteRegistration(studentId, courseName);
         courseRegistrationTable.refresh(); 
