@@ -6,7 +6,6 @@ import java.util.Map;
 import com.codecademy.dataStorage.RegistrationDAO;
 import com.codecademy.domain.Course;
 import com.codecademy.domain.Registration;
-import com.codecademy.domain.Student;
 
 import javafx.scene.control.TableView;
 
