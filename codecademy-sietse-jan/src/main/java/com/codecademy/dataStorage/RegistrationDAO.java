@@ -23,7 +23,6 @@ public class RegistrationDAO {
                     String courseName = resultSet.getString("CourseName");
                     String registrationDate = resultSet.getString("RegistrationDate");
                     registrations.add(new Registration(studentId, courseName, registrationDate));
-                    System.out.println("Registration found: " + courseName);
                 }
             } catch (SQLException e) {
                 System.out.println("Error: " + e.getMessage());
@@ -98,7 +97,6 @@ public class RegistrationDAO {
                 while (resultSet.next()) {
                     int studentId = resultSet.getInt("StudentId");
                     studentIds.add(studentId);
-                    System.out.println("Registration found: " + studentId);
                 }
             } catch (SQLException e) {
                 System.out.println("Error: " + e.getMessage());

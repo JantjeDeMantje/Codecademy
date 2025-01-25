@@ -70,9 +70,8 @@ public class StudentManager {
     }
 
 
-    
-
     // This method converts a string to a date
+    @SuppressWarnings("exports")
     public Date convertStringToDate(String date) {
         try {
             SimpleDateFormat inputFormat = new SimpleDateFormat("dd-MM-yyyy");

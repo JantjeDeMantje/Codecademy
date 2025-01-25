@@ -11,8 +11,8 @@ import com.codecademy.domain.Student;
 public class CourseProgressManager {
 
     private RegistrationManager registrationManager;
-    private ContentItemManager contentItemManager;
     private StudentManager studentManager;
+    private ContentItemManager contentItemManager;
     private WatchProgressManager watchProgressManager;
 
     private Course selectedCourse;
@@ -20,8 +20,8 @@ public class CourseProgressManager {
 
     public CourseProgressManager(Course course) {
         registrationManager = new RegistrationManager();
-        contentItemManager = new ContentItemManager();
         studentManager = new StudentManager();
+        contentItemManager = new ContentItemManager();
         watchProgressManager = new WatchProgressManager();
         selectedCourse = course;
 

@@ -30,7 +30,7 @@ public class RegistrationManager {
         return registrationDAO.findRegistrationsByStudentId(studentId);
     }
 
-    public ArrayList<Integer> getRegistrationsByCourse(String courseName){ // This method sends all the registrations that match with the courseName.
+    protected ArrayList<Integer> getRegistrationsByCourse(String courseName){ // This method sends all the registrations that match with the courseName.
         return registrationDAO.findRegistrationsByCourse(courseName);
     }
 

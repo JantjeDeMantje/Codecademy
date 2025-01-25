@@ -15,12 +15,12 @@ public class ContentItemManager {
     }
 
     // Get the content item ids by course name
-    public ArrayList<Integer> getContentItemIdsByCourse(String courseName) {
+    protected ArrayList<Integer> getContentItemIdsByCourse(String courseName) {
         return contentItemDAO.getContentItemIdsByCourse(courseName);
     }
 
     // Get the content item titles by content item ids
-    public Map<Integer, String> getContentItemTitlesMap(ArrayList<Integer> contentItemIds) {
+    protected Map<Integer, String> getContentItemTitlesMap(ArrayList<Integer> contentItemIds) {
         Map<Integer, String> contentItemTitlesMap = new HashMap<>();
         contentItemTitlesMap.putAll(contentItemDAO.getModulesTitlesMap(contentItemIds));
         contentItemTitlesMap.putAll(contentItemDAO.getWebcastTitlesMap(contentItemIds));

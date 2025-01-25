@@ -35,7 +35,6 @@ public class GUI extends Application { // This class shows all the GUI elements
         } else {
             fxmlPath = "/com/codecademy/" + fxmlPath;
         }
-        System.out.println("Loading FXML file: " + fxmlPath); // Logs the FXML file that is loaded.
         FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath)); // Loads the FXML file from the resources.
         return loader.load();
     }
