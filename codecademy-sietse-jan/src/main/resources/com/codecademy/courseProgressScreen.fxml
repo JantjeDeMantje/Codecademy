@@ -83,9 +83,9 @@
                       <TableColumn fx:id="progressColumn1" prefWidth="120.0" text="Gem. Voortgang" />
                     </columns>
                   </TableView>
-                  <TableView fx:id="moduleProgressTable" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2">
+                  <TableView fx:id="contentitemsProgressTable" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2">
                     <columns>
-                      <TableColumn fx:id="modulesColumn" prefWidth="260.0" text="ContentItems" />
+                      <TableColumn fx:id="contentitemsColumn" prefWidth="260.0" text="ContentItems" />
                       <TableColumn fx:id="progressColumn2" prefWidth="140.0" text="Gem. Voortgang" />
                     </columns>
                   </TableView>
