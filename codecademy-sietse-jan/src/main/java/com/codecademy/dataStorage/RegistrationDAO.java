@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 import com.codecademy.domain.Registration;
 
@@ -79,5 +80,34 @@ public class RegistrationDAO {
                 }
             }
         }
+    }
+
+    public ArrayList<Integer> findRegistrationsByCourse(String courseName) {
+        System.out.println("RegistrationDAO.findRegistrationsByCourse() called: " + courseName);
+        ArrayList<Integer> studentIds = new ArrayList<>();
+        Connection connection = DatabaseConnection.getConnection();
+        if (connection != null) {
+            try {
+                String query = "SELECT StudentId FROM Registration WHERE CourseName = ?";
+                PreparedStatement preparedStatement = connection.prepareStatement(query);
+                preparedStatement.setString(1, courseName);
+                ResultSet resultSet = preparedStatement.executeQuery();
+                while (resultSet.next()) {
+                    int studentId = resultSet.getInt("StudentId");
+                    studentIds.add(studentId);
+                    System.out.println("Registration found: " + studentId);
+                }
+            } catch (SQLException e) {
+                System.out.println("Error: " + e.getMessage());
+            } finally {
+                try {
+                    connection.close();
+                } catch (SQLException e) {
+                    System.out.println("Error closing connection: " + e.getMessage());
+                }
+            }
+        }
+        System.out.println("Returning studentIds: " + studentIds);
+        return studentIds;
     }
 }

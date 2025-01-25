@@ -16,7 +16,7 @@ public class RegistrationManager {
 
     private ArrayList<Course> courses = new ArrayList<>();
     
-    public RegistrationManager(Student student) {
+    public RegistrationManager() {
         registrationDAO = new RegistrationDAO();
         loadCourseManager();
     }
@@ -26,8 +26,12 @@ public class RegistrationManager {
         this.courses = courseManager.getCourses();
     }
 
-    public ArrayList<Registration> getRegistrations(int studentId){ // This method sends all the registrations that match with the studentId.{
+    public ArrayList<Registration> getRegistrationsByStudentId(int studentId){ // This method sends all the registrations that match with the studentId.{
         return registrationDAO.findRegistrationsByStudentId(studentId);
+    }
+
+    public ArrayList<Integer> getRegistrationsByCourse(String courseName){ // This method sends all the registrations that match with the courseName.
+        return registrationDAO.findRegistrationsByCourse(courseName);
     }
 
     public ArrayList<Course> getCourses(){

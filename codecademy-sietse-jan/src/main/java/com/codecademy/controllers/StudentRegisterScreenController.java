@@ -63,7 +63,7 @@ public class StudentRegisterScreenController {
 
     public void initialize() { // This method initializes the course screen.
         getinformation();
-        registrationManager = new RegistrationManager(selectedStudent); // Creates a new registrationManager object.
+        registrationManager = new RegistrationManager(); // Creates a new registrationManager object.
         setLabel();
         fillTable();
         tableSelectionListener();
@@ -94,7 +94,7 @@ public class StudentRegisterScreenController {
             coursesAndRegistrations.put(course.getCourseName(), false); // For each course, you put the courseName and a false status.
         });
     
-        registrationManager.getRegistrations(selectedStudent.getStudentId()).forEach(registration -> { 
+        registrationManager.getRegistrationsByStudentId(selectedStudent.getStudentId()).forEach(registration -> { 
             for(Map.Entry<String,Boolean> entry : coursesAndRegistrations.entrySet()){
                 if (entry.getKey().equals(registration.getCourseName())){ // When the course has a registration, the status will be true.
                     entry.setValue(true); // Makes the status true

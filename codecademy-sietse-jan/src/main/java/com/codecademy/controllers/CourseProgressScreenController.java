@@ -1,5 +1,6 @@
 package com.codecademy.controllers;
 
+import java.util.ArrayList;
 import java.util.Map;
 
 import com.codecademy.GUI;
@@ -97,30 +98,30 @@ public class CourseProgressScreenController {
         difficultyTV.setText(selectedCourse.getDifficulty().toString());
         subjectTV.setText(selectedCourse.getSubject());
         introtextTV.setText(selectedCourse.getIntroductionText());
-        achievedCountTV.setText(String.valueOf(10 + (int) ((100 - 10 + 10) * Math.random())));
+        achievedCountTV.setText(String.valueOf(10 + (int) ((100 - 10 + 10) * Math.random()))); // We dont save certificates, so we made this number random.
     }
 
     private void fillStudentsTable() { // This method fills the table with the data from the courseProgressManager.
-        Map<Student, Double> averageWatchPercentages = courseProgressManager.getAverageWatchPercentagePerStudent(); // Gets the average watch percentages from the courseProgressManager.
+        // Map<Student, Double> averageWatchPercentages = courseProgressManager.getAverageWatchPercentagePerStudent(); // Gets the average watch percentages from the courseProgressManager.
 
-        averageWatchPercentages.forEach((student, averagePercentage) -> {
-            WatchPercentage wp = new WatchPercentage(student, null, averagePercentage); // Makes a new watchPercentage object, so it can be added to the table.
-            studentsProgressTable.getItems().add(wp);
-        });
+        // averageWatchPercentages.forEach((student, averagePercentage) -> {
+        //     WatchPercentage wp = new WatchPercentage(student, null, averagePercentage); // Makes a new watchPercentage object, so it can be added to the table.
+        //     studentsProgressTable.getItems().add(wp);
+        // });
 
-        studentsColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getStudent().getName()));
-        progressColumn1.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getWatchPercentage() + "%"));
+        // studentsColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getStudent().getName()));
+        // progressColumn1.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getWatchPercentage() + "%"));
     }
 
     private void fillModulesTable() { // This method fills the table with the data from the courseProgressManager.
-        Map<Module, Double> averageWatchPercentages = courseProgressManager.getAverageWatchPercentagePerModule(); // Gets the average watch percentages from the courseProgressManager.
+    //     Map<Module, Double> averageWatchPercentages = courseProgressManager.getAverageWatchPercentagePerModule(); // Gets the average watch percentages from the courseProgressManager.
 
-        averageWatchPercentages.forEach((module, averagePercentage) -> { // Adds the module to the table.
-            moduleProgressTable.getItems().add(module);
-        });
+    //     averageWatchPercentages.forEach((module, averagePercentage) -> { // Adds the module to the table.
+    //         moduleProgressTable.getItems().add(module);
+    //     });
 
-        modulesColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getTitle()));
-        progressColumn2.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(averageWatchPercentages.get(cellData.getValue())) + "%"));
+    //     modulesColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getTitle()));
+    //     progressColumn2.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(averageWatchPercentages.get(cellData.getValue())) + "%"));
     }  
 
 
@@ -133,19 +134,19 @@ public class CourseProgressScreenController {
     }
 
     private void handleRowSelect(WatchPercentage selectedWatchPercentage) { // This method handels the selected row.
-        System.out.println("Selected student: " + selectedWatchPercentage.getStudent().getName()); // Logs the selected studentName
-        moduleProgressTable.getItems().clear();
+        // System.out.println("Selected student: " + selectedWatchPercentage.getStudent().getName()); // Logs the selected studentName
+        // moduleProgressTable.getItems().clear();
 
-        Map<Module, Double> watchPercentageForStudent = courseProgressManager.getWatchPercentageForStudent(selectedWatchPercentage.getStudent()); // Gets the watch percentage for the selected student.
+        // Map<Module, Double> watchPercentageForStudent = courseProgressManager.getWatchPercentageForStudent(selectedWatchPercentage.getStudent()); // Gets the watch percentage for the selected student.
 
-        watchPercentageForStudent.forEach((module, averagePercentage) -> { // Adds the module to the table.
-            moduleProgressTable.getItems().add(module);
-        });
+        // watchPercentageForStudent.forEach((module, averagePercentage) -> { // Adds the module to the table.
+        //     moduleProgressTable.getItems().add(module);
+        // });
 
-        modulesColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getTitle()));
-        progressColumn2.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(watchPercentageForStudent.get(cellData.getValue())) + "%"));
+        // modulesColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getTitle()));
+        // progressColumn2.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(watchPercentageForStudent.get(cellData.getValue())) + "%"));
 
-        progressColumn2.setText("Voortgang student");
+        // progressColumn2.setText("Voortgang student");
     }
 
     

@@ -1,53 +1,21 @@
 package com.codecademy.logic;
 
 import java.util.ArrayList;
-import java.util.Map;
 
 import com.codecademy.domain.Course;
-import com.codecademy.domain.Module;
-import com.codecademy.domain.Student;
-import com.codecademy.domain.WatchPercentage;
-
 
 public class CourseProgressManager {
 
-    private WatchProgressManager watchProgressManager;
-
-    private ArrayList<Module> modules;
-    private ArrayList<WatchPercentage> watchPercentages;
-    private Map<Student, Double> averageWatchPercentagePerStudent;
-    private Map<Module, Double> averageWatchPercentagePerModule;
+    private RegistrationManager registrationManager;
+    private Course selectedCourse;
 
     public CourseProgressManager(Course course) {
-        loadWatchProgressManager(course);
+        registrationManager = new RegistrationManager();
+        selectedCourse = course;
     }
 
-    private void loadWatchProgressManager(Course course) { // Loads all watchProgresses
-        watchProgressManager = new WatchProgressManager(course);
-        this.watchPercentages = watchProgressManager.getWatchPercentages();
-        this.averageWatchPercentagePerStudent = watchProgressManager.getAverageWatchPercentagePerStudent();
-        this.averageWatchPercentagePerModule = watchProgressManager.getAverageWatchPercentagePerModule();
-
-        this.modules = watchProgressManager.getModules(); // Loads all the modules from the ModuleManager.
-    }
-
-    public ArrayList<Module> getModules() {
-        return modules;
-    }
-
-    public ArrayList<WatchPercentage> getWatchPercentages() {
-        return watchPercentages;
-    }
-
-    public Map<Student, Double> getAverageWatchPercentagePerStudent() {
-        return averageWatchPercentagePerStudent;
-    }    
-
-    public Map<Module, Double> getAverageWatchPercentagePerModule(){
-        return averageWatchPercentagePerModule;
-    }
-
-    public Map<Module, Double> getWatchPercentageForStudent(Student student) {
-        return watchProgressManager.getWatchPercentageForStudent(student);
+    public ArrayList<Integer> getStudents(){
+        System.out.println("CourseProgressManager.getStudents() called " + selectedCourse.getCourseName());
+        return registrationManager.getRegistrationsByCourse(selectedCourse.getCourseName());
     }
 }
