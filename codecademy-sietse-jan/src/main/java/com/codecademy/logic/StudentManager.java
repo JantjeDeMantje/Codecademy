@@ -76,4 +76,8 @@ public class StudentManager {
             return null;
         }
     }
+
+    public Student getStudentInfoById(int studentId) {
+        return studentDAO.getStudentInfoById(studentId);
+    }
 }

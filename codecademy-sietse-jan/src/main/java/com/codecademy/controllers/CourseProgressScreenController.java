@@ -102,15 +102,20 @@ public class CourseProgressScreenController {
     }
 
     private void fillStudentsTable() { // This method fills the table with the data from the courseProgressManager.
-        // Map<Student, Double> averageWatchPercentages = courseProgressManager.getAverageWatchPercentagePerStudent(); // Gets the average watch percentages from the courseProgressManager.
 
-        // averageWatchPercentages.forEach((student, averagePercentage) -> {
-        //     WatchPercentage wp = new WatchPercentage(student, null, averagePercentage); // Makes a new watchPercentage object, so it can be added to the table.
-        //     studentsProgressTable.getItems().add(wp);
-        // });
-
-        // studentsColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getStudent().getName()));
-        // progressColumn1.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getWatchPercentage() + "%"));
+        Map<Student, Double> averageWatchPercentages = courseProgressManager.getAverageWatchPercentagePerStudent(); // Gets the average watch percentages from the courseProgressManager.
+    
+        averageWatchPercentages.forEach((student, averagePercentage) -> {
+            WatchPercentage wp = new WatchPercentage(student.getStudentId(), averagePercentage, 1); // Makes a new watchPercentage object, so it can be added to the table.
+            studentsProgressTable.getItems().add(wp);
+        });
+    
+        studentsColumn.setCellValueFactory(cellData -> {
+            WatchPercentage wp = cellData.getValue();
+            Student student = courseProgressManager.getStudentInfoById(wp.getStudentId());
+            return new SimpleStringProperty(student.getName()); // Use student name instead of student ID
+        });
+        progressColumn1.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getWatchPercentage() + "%"));
     }
 
     private void fillModulesTable() { // This method fills the table with the data from the courseProgressManager.

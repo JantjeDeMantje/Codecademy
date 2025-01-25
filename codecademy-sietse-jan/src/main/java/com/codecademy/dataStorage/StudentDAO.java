@@ -144,4 +144,41 @@ public class StudentDAO{
             return false;
         }
     }
+
+    public Student getStudentInfoById(int studentId) {
+        Student student = null;
+        Connection connection = DatabaseConnection.getConnection();
+        if (connection != null) {
+            try {
+                String query = "SELECT StudentId, EmailAddress, Name, Birthday, Gender, Address, Zipcode, City, Country, Student.AddressId " +
+                               "FROM Student " +
+                               "JOIN Address ON Student.AddressId = Address.AddressId " +
+                               "WHERE StudentId = ?";
+                PreparedStatement preparedStatement = connection.prepareStatement(query);
+                preparedStatement.setInt(1, studentId);
+                ResultSet resultSet = preparedStatement.executeQuery();
+                if (resultSet.next()) {
+                    String name = resultSet.getString("Name");
+                    String email = resultSet.getString("EmailAddress");
+                    Date birthdate = resultSet.getDate("Birthday");
+                    String gender = resultSet.getString("Gender");
+                    String address = resultSet.getString("Address");
+                    String zipcode = resultSet.getString("Zipcode");
+                    String city = resultSet.getString("City");
+                    String country = resultSet.getString("Country");
+                    int addressId = resultSet.getInt("AddressId");
+                    student = new Student(studentId, name, email, birthdate, gender, address, zipcode, city, country, addressId);
+                }
+            } catch (SQLException e) {
+                System.out.println("Error: " + e.getMessage());
+            } finally {
+                try {
+                    connection.close();
+                } catch (SQLException e) {
+                    System.out.println("Error closing connection: " + e.getMessage());
+                }
+            }
+        }
+        return student;
+    }
 }
