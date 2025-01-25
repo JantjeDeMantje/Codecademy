@@ -12,12 +12,14 @@ public class CourseProgressManager {
     private RegistrationManager registrationManager;
     private ContentItemManager contentItemManager;
     private StudentManager studentManager;
+    private WatchProgressManager watchProgressManager;
     private Course selectedCourse;
 
     public CourseProgressManager(Course course) {
         registrationManager = new RegistrationManager();
         contentItemManager = new ContentItemManager();
         studentManager = new StudentManager();
+        watchProgressManager = new WatchProgressManager();
         selectedCourse = course;
     }
 
@@ -34,14 +36,19 @@ public class CourseProgressManager {
 
         for (int student : getStudents()) {
             Student studentInfo = getStudentInfoById(student);
-            averageWatchPercentagePerStudent.put(studentInfo, 1.1);
+            averageWatchPercentagePerStudent.put(studentInfo, watchProgressManager.getAverageWatchPercentageByStudent(student));
         }
 
         return averageWatchPercentagePerStudent;
     }
 
+
     private ArrayList<Integer> getContentItemIds(){
         return contentItemManager.getContentItemIdsByCourse(selectedCourse.getCourseName());
+    }
+
+    private ArrayList<String> getContentItemTitles(){
+        return contentItemManager.getContentItemTitles(getContentItemIds());
     }
 
     public Map<String, Double> getAverageWatchPercentagePerContentItem(){
@@ -54,7 +61,4 @@ public class CourseProgressManager {
         return averageWatchPercentagePerContentItem;
     }
 
-    public ArrayList<String> getContentItemTitles(){
-        return contentItemManager.getContentItemTitles(getContentItemIds());
-    }
 }
