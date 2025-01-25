@@ -67,4 +67,18 @@ public class CourseProgressManager {
 
         return averageWatchPercentagePerContentItem;
     }
+
+    public Map<String, Double> getWatchPercentageForStudent(int studentId){
+        Map<String, Double> watchPercentageForStudent = new HashMap<>();
+
+        Map<Integer, String> contentItemTitlesMap = getContentItemTitlesMap(contentItemIds);
+
+        for (int contentItemId : contentItemIds) {
+            String contentItemTitle = contentItemTitlesMap.get(contentItemId);
+            double watchPercentage = watchProgressManager.getWatchPercentageByStudentAndContentItem(studentId, contentItemId);
+            watchPercentageForStudent.put(contentItemTitle, watchPercentage);
+        }
+
+        return watchPercentageForStudent;
+    }
 }

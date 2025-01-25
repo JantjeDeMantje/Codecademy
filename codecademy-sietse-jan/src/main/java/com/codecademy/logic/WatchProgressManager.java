@@ -20,4 +20,8 @@ public class WatchProgressManager {
         return watchProgressDAO.getAverageWatchPercentageByContentItem(contentItemId);
     }
 
+    public double getWatchPercentageByStudentAndContentItem(int studentId, int contentItemId){
+        return watchProgressDAO.getWatchPercentageByStudentAndContentItem(studentId, contentItemId);
+    }
+
 }

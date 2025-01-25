@@ -1,6 +1,5 @@
 package com.codecademy.controllers;
 
-import java.util.ArrayList;
 import java.util.Map;
 
 import com.codecademy.GUI;
@@ -144,20 +143,26 @@ public class CourseProgressScreenController {
         });
     }
 
-    private void handleRowSelect(WatchPercentage selectedWatchPercentage) { // This method handels the selected row.
-        // System.out.println("Selected student: " + selectedWatchPercentage.getStudent().getName()); // Logs the selected studentName
-        // moduleProgressTable.getItems().clear();
+    private void handleRowSelect(WatchPercentage selectedWatchPercentage) { // This method handles the selected row.
 
-        // Map<Module, Double> watchPercentageForStudent = courseProgressManager.getWatchPercentageForStudent(selectedWatchPercentage.getStudent()); // Gets the watch percentage for the selected student.
+        System.out.println("Selected student: " + selectedWatchPercentage.getStudentId()); // Logs the selected student ID
 
-        // watchPercentageForStudent.forEach((module, averagePercentage) -> { // Adds the module to the table.
-        //     moduleProgressTable.getItems().add(module);
-        // });
+        contentitemsProgressTable.getItems().clear();
 
-        // modulesColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getTitle()));
-        // progressColumn2.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(watchPercentageForStudent.get(cellData.getValue())) + "%"));
+        Map<String, Double> watchPercentageForStudent = courseProgressManager.getWatchPercentageForStudent(selectedWatchPercentage.getStudentId()); // Gets the watch percentage for the selected student.
 
-        // progressColumn2.setText("Voortgang student");
+        watchPercentageForStudent.forEach((contentItemTitle, watchPercentage) -> { // Adds the content item to the table.
+            contentitemsProgressTable.getItems().add(contentItemTitle);
+        });
+
+        contentitemsColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue()));
+        progressColumn2.setCellValueFactory(cellData -> {
+            String contentItemId = cellData.getValue();
+            Double watchPercentage = watchPercentageForStudent.get(contentItemId);
+            return new SimpleStringProperty(watchPercentage + "%");
+        });
+
+        progressColumn2.setText("Voortgang student");
     }
 
     

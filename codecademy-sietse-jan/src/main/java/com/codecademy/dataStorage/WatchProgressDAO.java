@@ -55,5 +55,27 @@ public class WatchProgressDAO {
 
         return averageWatchPercentage;
     }
+
+    public double getWatchPercentageByStudentAndContentItem(int studentId, int contentItemId){
+        double watchPercentage = 0.0;
+        String query = "SELECT WatchPercentage FROM WatchPercentage WHERE StudentId = ? AND ContentItemId = ?";
+
+        try (Connection connection = DatabaseConnection.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+
+            preparedStatement.setInt(1, studentId);
+            preparedStatement.setInt(2, contentItemId);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            if (resultSet.next()) {
+                watchPercentage = resultSet.getDouble("WatchPercentage");
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return watchPercentage;
+    }
 }
     
