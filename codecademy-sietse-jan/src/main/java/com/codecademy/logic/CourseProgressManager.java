@@ -10,11 +10,13 @@ import com.codecademy.domain.Student;
 public class CourseProgressManager {
 
     private RegistrationManager registrationManager;
+    private ContentItemManager contentItemManager;
     private StudentManager studentManager;
     private Course selectedCourse;
 
     public CourseProgressManager(Course course) {
         registrationManager = new RegistrationManager();
+        contentItemManager = new ContentItemManager();
         studentManager = new StudentManager();
         selectedCourse = course;
     }
@@ -36,5 +38,23 @@ public class CourseProgressManager {
         }
 
         return averageWatchPercentagePerStudent;
+    }
+
+    private ArrayList<Integer> getContentItemIds(){
+        return contentItemManager.getContentItemIdsByCourse(selectedCourse.getCourseName());
+    }
+
+    public Map<String, Double> getAverageWatchPercentagePerContentItem(){
+        Map<String, Double> averageWatchPercentagePerContentItem = new HashMap<>();
+
+        for (String contentItemTitle : getContentItemTitles()) {
+            averageWatchPercentagePerContentItem.put(contentItemTitle, 1.1);
+        }
+
+        return averageWatchPercentagePerContentItem;
+    }
+
+    public ArrayList<String> getContentItemTitles(){
+        return contentItemManager.getContentItemTitles(getContentItemIds());
     }
 }

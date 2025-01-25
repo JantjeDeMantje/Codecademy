@@ -5,11 +5,14 @@ import java.util.Map;
 
 import com.codecademy.GUI;
 import com.codecademy.dataStorage.DataHolder;
+import com.codecademy.domain.ContentItem;
 import com.codecademy.domain.Course;
 import com.codecademy.domain.WatchPercentage;
 import com.codecademy.logic.CourseProgressManager;
 import com.codecademy.domain.Module;
 import com.codecademy.domain.Student;
+
+import javafx.util.Pair;
 
 import javafx.beans.property.SimpleStringProperty;
 import javafx.event.ActionEvent;
@@ -55,16 +58,16 @@ public class CourseProgressScreenController {
     private TextArea introtextTV;
 
     @FXML
-    private TableView<Module> moduleProgressTable;
+    private TableView<String> contentitemsProgressTable;
 
     @FXML
-    private TableColumn<Module, String> modulesColumn;
+    private TableColumn<String, String> contentitemsColumn;
 
     @FXML
     private TableColumn<WatchPercentage, String> progressColumn1;
 
     @FXML
-    private TableColumn<Module, String> progressColumn2;
+    private TableColumn<String, String> progressColumn2;
 
     @FXML
     private TableColumn<WatchPercentage, String> studentsColumn;
@@ -83,7 +86,7 @@ public class CourseProgressScreenController {
         courseProgressManager = new CourseProgressManager(selectedCourse); // Creates a new courseProgressManager object.
         setLabels();
         fillStudentsTable();
-        fillModulesTable();
+        fillContentItemsTable();
 
         tableSelectionListener();
     }
@@ -117,18 +120,21 @@ public class CourseProgressScreenController {
         });
         progressColumn1.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getWatchPercentage() + "%"));
     }
-
-    private void fillModulesTable() { // This method fills the table with the data from the courseProgressManager.
-    //     Map<Module, Double> averageWatchPercentages = courseProgressManager.getAverageWatchPercentagePerModule(); // Gets the average watch percentages from the courseProgressManager.
-
-    //     averageWatchPercentages.forEach((module, averagePercentage) -> { // Adds the module to the table.
-    //         moduleProgressTable.getItems().add(module);
-    //     });
-
-    //     modulesColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getTitle()));
-    //     progressColumn2.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(averageWatchPercentages.get(cellData.getValue())) + "%"));
-    }  
-
+        
+    private void fillContentItemsTable() { // This method fills the table with the data from the courseProgressManager.
+    Map<String, Double> averageWatchPercentages = courseProgressManager.getAverageWatchPercentagePerContentItem(); // Gets the average watch percentages from the courseProgressManager.
+    
+    averageWatchPercentages.forEach((contentItemTitle, averagePercentage) -> { // Adds the content item to the table.
+        contentitemsProgressTable.getItems().add(contentItemTitle);
+    });
+    
+    contentitemsColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue()));
+    progressColumn2.setCellValueFactory(cellData -> {
+        String contentItemId = cellData.getValue();
+        Double averagePercentage = averageWatchPercentages.get(contentItemId);
+        return new SimpleStringProperty(averagePercentage + "%");
+    });
+    }
 
     private void tableSelectionListener() { // This method looks if a row is selected.
         studentsProgressTable.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
@@ -165,8 +171,8 @@ public class CourseProgressScreenController {
     void handleRefreshButton(ActionEvent event) { // This method handles the refresh button.
         System.out.println("Refresh button clicked"); // Logs the activation of the refresh button.
 
-        moduleProgressTable.getItems().clear(); // Clears the table.
-        fillModulesTable(); // Fills the table again.
+        contentitemsProgressTable.getItems().clear(); // Clears the table.
+        fillContentItemsTable(); // Fills the table again.
         progressColumn2.setText("Gem. Voortgang");
     }
 }
