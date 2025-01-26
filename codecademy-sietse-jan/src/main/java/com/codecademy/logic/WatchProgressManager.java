@@ -16,17 +16,20 @@ public class WatchProgressManager {
 
     // This method returns the average watch percentage of a student.
     protected double getAverageWatchPercentageByStudent(int studentId, ArrayList<Integer> contentItemIds){
-        return watchProgressDAO.getAverageWatchPercentageByStudent(studentId, contentItemIds);
+        double average = watchProgressDAO.getAverageWatchPercentageByStudent(studentId, contentItemIds);
+        return Math.round(average * 10.0) / 10.0;
     }
 
     // This method returns the average watch percentage of a content item.
     protected double getAverageWatchPercentageByContentItem(int contentItemId){
-        return watchProgressDAO.getAverageWatchPercentageByContentItem(contentItemId);
+        double average = watchProgressDAO.getAverageWatchPercentageByContentItem(contentItemId);
+        return Math.round(average * 10.0) / 10.0;
     }
 
     // This method returns the watch percentage of a student and a content item.
     protected double getWatchPercentageByStudentAndContentItem(int studentId, int contentItemId){
-        return watchProgressDAO.getWatchPercentageByStudentAndContentItem(studentId, contentItemId);
+        double average = watchProgressDAO.getWatchPercentageByStudentAndContentItem(studentId, contentItemId);
+        return Math.round(average * 10.0) / 10.0;
     }
 
 }
