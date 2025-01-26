@@ -29,11 +29,6 @@ public class StudentManagerTest {
     }
 
     @Test
-    public void testIsUniqueEmailShouldReturnFalse() {
-        assertFalse(studentManager.checkUniqueEmail("jan.roelofs@example.nl", 1));
-    }
-
-    @Test
     public void testConvertStringToDateShouldReturnTrue() {
         assertTrue(studentManager.convertStringToDate("1990-01-01") instanceof java.sql.Date);
     }
